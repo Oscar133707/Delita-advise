@@ -1,0 +1,221 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { ArrowLeft, Phone } from 'lucide-react';
+
+interface EmissionerProps {
+  onNavigate: (path: string) => void;
+}
+
+export const Emissioner = ({ onNavigate }: EmissionerProps) => {
+  return (
+    <div className="min-h-screen bg-white font-sans">
+      
+      {/* HERO SECTION */}
+      <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&q=80&w=2000" 
+            alt="Financial growth" 
+            loading="lazy"
+            decoding="async"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-slate-900/60" />
+        </div>
+        
+        <div className="relative z-10 max-w-6xl mx-auto px-6 text-center text-white">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="font-serif text-5xl md:text-6xl font-medium mb-6 drop-shadow-lg"
+          >
+            Emissioner
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-lg md:text-2xl text-slate-200 font-light max-w-2xl mx-auto"
+          >
+            Säkerställ en korrekt process vid kapitalanskaffning
+          </motion.p>
+        </div>
+      </section>
+
+      {/* INTRODUCTION */}
+      <section className="py-24 bg-white">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="prose prose-lg prose-slate mx-auto"
+          >
+            <p className="text-xl md:text-2xl text-slate-800 font-serif leading-relaxed italic mb-8">
+              "Vi på Delita Advise erbjuder omfattande hjälp vid registrering och beräkning av emissioner. Oavsett om ditt företag planerar en nyemission, företrädesemission eller riktad emission, står vi vid din sida för att säkerställa en korrekt och effektiv process."
+            </p>
+            <p className="text-slate-600 leading-loose">
+              Vi bistår med noggrann beräkning av emissionsvillkor, värdering av aktier samt all nödvändig dokumentation för registrering av emissionen. Vårt mål är att göra emissionen smidig och i enlighet med gällande regelverk, så att du kan fokusera på att genomföra din strategi och driva ditt företag framåt.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* SERVICE AREAS - Alternating Layout */}
+      <section className="py-12 bg-slate-50 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 space-y-20">
+
+          {/* Item 1: Beräkning & Analys */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="order-2 lg:order-1"
+            >
+              <h3 className="font-serif text-3xl text-slate-900 mb-6 border-l-4 border-delita-navy pl-6">Beräkning & Analys</h3>
+              <p className="text-slate-600 text-lg leading-relaxed font-light">
+                Vi hjälper er att ta fram korrekta underlag och beräkningar för emissionsvillkoren. En solid analys är grunden för en lyckad emission, och vi säkerställer att alla siffror stämmer överens med era mål och marknadens förväntningar.
+              </p>
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="order-1 lg:order-2 relative aspect-[16/9] shadow-lg rounded-sm overflow-hidden"
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=1200" 
+                alt="Financial calculations" 
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+              />
+            </motion.div>
+          </div>
+
+          {/* Item 2: Värdering */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="order-1 relative aspect-[16/9] shadow-lg rounded-sm overflow-hidden"
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200" 
+                alt="Valuation analysis" 
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+              />
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="order-2"
+            >
+              <h3 className="font-serif text-3xl text-slate-900 mb-6 border-l-4 border-delita-navy pl-6">Värdering</h3>
+              <p className="text-slate-600 text-lg leading-relaxed font-light">
+                Professionell värdering av bolaget och aktierna inför emissionen är avgörande. Vi använder etablerade metoder för att fastställa ett rättvisande värde, vilket skapar trygghet för både nuvarande och tillträdande aktieägare.
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Item 3: Dokumentation */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="order-2 lg:order-1"
+            >
+              <h3 className="font-serif text-3xl text-slate-900 mb-6 border-l-4 border-delita-navy pl-6">Dokumentation</h3>
+              <p className="text-slate-600 text-lg leading-relaxed font-light">
+                Pappersarbetet måste vara felfritt. Vi upprättar stämmoprotokoll, styrelsebeslut, teckningslistor och investeringsmemorandum. Vi ser till att all formalia följer aktiebolagslagen till punkt och pricka.
+              </p>
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="order-1 lg:order-2 relative aspect-[16/9] shadow-lg rounded-sm overflow-hidden"
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1583521214690-73421a1829a9?auto=format&fit=crop&q=80&w=1200" 
+                alt="Legal documentation" 
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+              />
+            </motion.div>
+          </div>
+
+           {/* Item 4: Registrering */}
+           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="order-1 relative aspect-[16/9] shadow-lg rounded-sm overflow-hidden"
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200" 
+                alt="Corporate registration" 
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+              />
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="order-2"
+            >
+              <h3 className="font-serif text-3xl text-slate-900 mb-6 border-l-4 border-delita-navy pl-6">Registrering</h3>
+              <p className="text-slate-600 text-lg leading-relaxed font-light">
+                Vi sköter all kontakt med Bolagsverket och ser till att emissionen registreras korrekt och i tid. Vi hanterar hela flödet så att ni slipper sitta i telefonköer eller oroa er för kompletteringar.
+              </p>
+            </motion.div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* CTA SECTION */}
+      <section className="py-24 md:py-32 bg-white flex items-center justify-center">
+        <div className="max-w-4xl mx-auto px-6 text-center text-slate-800">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="font-serif text-4xl md:text-5xl mb-6 text-slate-900">Vill du veta mer om emissioner?</h2>
+            <p className="text-slate-700 text-lg mb-10 max-w-xl mx-auto">
+              Vi har expertisen som krävs för en trygg kapitalanskaffning. Kontakta oss idag.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                onClick={() => onNavigate('/kontakt')}
+                className="inline-flex items-center justify-center px-8 py-3 bg-delita-navy text-slate-800 font-medium hover:bg-[#D6CFC3] transition-colors rounded-sm shadow-lg"
+              >
+                <Phone className="w-4 h-4 mr-2" />
+                Kontakta oss
+              </button>
+              <button 
+                onClick={() => onNavigate('/')}
+                className="inline-flex items-center justify-center px-8 py-3 border border-slate-300 text-slate-800 font-medium hover:bg-slate-100 transition-colors rounded-sm"
+              >
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Tillbaka till tjänster
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    </div>
+  );
+};

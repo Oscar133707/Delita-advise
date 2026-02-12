@@ -1,0 +1,26 @@
+/* Additional styles for Delita Advise */
+
+/* Mobile menu overlay: full viewport in phone view, only when menu is open */
+.delita-mobile-menu,
+#delita-mobile-menu-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  /* Fallback when JS height not yet set */
+  min-height: 100vh !important;
+  min-height: 100dvh !important;
+  min-height: -webkit-fill-available !important;
+  /* Prevent any overflow or scroll on the overlay itself */
+  overflow: hidden !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Ensure the overlay stacks above everything on small viewports */
+@media (max-width: 1023.98px) {
+  #delita-mobile-menu-overlay {
+    z-index: 9999 !important;
+    bottom: 0 !important;
+  }
+}
