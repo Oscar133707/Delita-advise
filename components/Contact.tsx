@@ -105,7 +105,7 @@ export const Contact = ({ onNavigate }: ContactProps) => {
                    </div>
                    <div>
                      <h3 className="font-serif text-lg font-medium text-slate-900 mb-2">Öppettider</h3>
-                     <p className="text-slate-600">Måndag - Fredag: 09:00 - 17:00</p>
+                     <p className="text-slate-600">Måndag - Fredag: 08:30 - 17:00</p>
                    </div>
                 </div>
               </div>

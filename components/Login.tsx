@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Shield, ExternalLink, Mail, ArrowLeft } from 'lucide-react';
+import fortnoxIcon from '../Delita bilder/Logos/fortnox-icon.svg';
+import accountecLogo from '../Delita bilder/Logos/674ec2a544b7a38a39f18497_logo-cirkel-green-white.png';
 
 interface LoginProps {
   onNavigate: (path: string) => void;
@@ -10,16 +12,14 @@ const portals = [
   {
     name: "Fortnox",
     description: "Affärssystem & Bokföring",
-    color: "bg-[#ed553b]", // Fortnox brand color approx
-    textColor: "text-white",
+    logo: fortnoxIcon,
     url: "https://www.fortnox.se/logga-in"
   },
   {
-    name: "SRF Konsulterna",
-    description: "Branschorganisation",
-    color: "bg-[#003366]", // SRF brand color approx
-    textColor: "text-white",
-    url: "https://www.srfkonsult.se/logga-in"
+    name: "Accountec",
+    description: "Redovisningssystem",
+    logo: accountecLogo,
+    url: "https://delita.byraonline.se/"
   }
 ];
 
@@ -61,11 +61,13 @@ export const Login = ({ onNavigate }: LoginProps) => {
               transition={{ delay: index * 0.1 }}
               className="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 flex flex-col items-center text-center h-64 justify-between"
             >
-              <div className="w-full">
-                <div className={`w-16 h-16 mx-auto mb-6 rounded-2xl ${portal.color} flex items-center justify-center shadow-inner`}>
-                  <span className={`font-bold text-xl ${portal.textColor}`}>
-                    {portal.name.charAt(0)}
-                  </span>
+              <div className="w-full flex-grow flex flex-col justify-center">
+                <div className="w-20 h-20 mx-auto mb-6 flex items-center justify-center">
+                  <img
+                    src={portal.logo}
+                    alt={`${portal.name} logo`}
+                    className="w-full h-full object-contain"
+                  />
                 </div>
                 <h3 className="font-serif text-2xl text-slate-900 mb-2 group-hover:text-slate-700 transition-colors">
                   {portal.name}
@@ -75,7 +77,7 @@ export const Login = ({ onNavigate }: LoginProps) => {
                 </p>
               </div>
 
-              <div className="w-full mt-6">
+              <div className="w-full">
                 <span className="inline-flex items-center justify-center w-full py-3 px-6 rounded-full bg-slate-50 text-slate-700 font-medium text-sm group-hover:bg-delita-navy group-hover:text-slate-800 transition-all duration-300">
                   Logga in
                   <ExternalLink className="w-4 h-4 ml-2" />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { HeartHandshake, Award, MapPin, BadgeCheck } from 'lucide-react';
+import { HeartHandshake, Award, Monitor, BadgeCheck } from 'lucide-react';
 
 const features = [
   {
@@ -14,9 +14,9 @@ const features = [
     description: "Mångårig kompetens inom ekonomi och rådgivning."
   },
   {
-    icon: MapPin,
-    title: "Lokal närvaro",
-    description: "Snabb och smidig kontakt i Vellinge."
+    icon: Monitor,
+    title: "Digital närvaro",
+    description: "Snabb och smidig kontakt digitalt."
   },
   {
     icon: BadgeCheck,
@@ -43,11 +43,11 @@ export const WhyChooseUs = () => {
             Vårt Löfte
           </span>
           <h2 className="font-serif text-3xl md:text-5xl text-slate-900 mb-8">
-            Varför välja AB Delita Advise?
+            Varför välja Delita Advise?
           </h2>
           <div className="w-20 h-1 bg-delita-navy mx-auto mb-8" />
           <p className="text-slate-600 text-lg md:text-xl font-light leading-relaxed">
-            Vi kombinerar expertis, engagemang och lokal närvaro för att ge dig skräddarsydda lösningar som passar dina behov.
+            Vi kombinerar expertis, engagemang och digital närvaro för att ge dig skräddarsydda lösningar som passar dina behov.
           </p>
         </motion.div>
 

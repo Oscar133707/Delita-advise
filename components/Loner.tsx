@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Phone, CheckCircle2 } from 'lucide-react';
+import pexelsYankrukovImage from '../Delita bilder/Nya/pexels-yankrukov-7691673.jpg';
 
 interface LonerProps {
   onNavigate: (path: string) => void;
@@ -13,9 +14,9 @@ export const Loner = ({ onNavigate }: LonerProps) => {
       {/* HERO SECTION */}
       <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img 
-            src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&q=80&w=2000" 
-            alt="Team meeting" 
+          <img
+            src={pexelsYankrukovImage}
+            alt="Payroll and employee management"
             loading="lazy"
             decoding="async"
             className="w-full h-full object-cover"

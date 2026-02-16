@@ -1,5 +1,8 @@
 import React from 'react';
 import { MapPin, Mail, Phone, ExternalLink, Instagram, Facebook, Shield } from 'lucide-react';
+import fortnoxIcon from '../Delita bilder/Logos/fortnox-icon.svg';
+import accountecLogo from '../Delita bilder/Logos/674ec2a544b7a38a39f18497_logo-cirkel-green-white.png';
+import srfLogo from '../Delita bilder/Logos/srf_bildmarke_kvadrat-1-removebg-preview.png';
 
 interface FooterProps {
   onNavigate: (path: string) => void;
@@ -111,14 +114,18 @@ export const Footer = ({ onNavigate }: FooterProps) => {
             <div className="space-y-6">
               {/* Fortnox */}
               <div className="pt-2">
-                <a 
-                  href="https://www.fortnox.se" 
-                  target="_blank" 
+                <a
+                  href="https://www.fortnox.se"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-center space-x-3 text-slate-600 hover:text-slate-800 transition-colors"
                 >
-                  <div className="w-10 h-10 bg-slate-700/20 rounded flex items-center justify-center group-hover:bg-slate-700/40 transition-colors">
-                    <Shield className="w-6 h-6 text-slate-700" />
+                  <div className="w-10 h-10 flex items-center justify-center">
+                    <img
+                      src={fortnoxIcon}
+                      alt="Fortnox logo"
+                      className="w-full h-full object-contain"
+                    />
                   </div>
                   <div>
                     <p className="font-semibold text-slate-800">Fortnox</p>
@@ -130,14 +137,18 @@ export const Footer = ({ onNavigate }: FooterProps) => {
 
               {/* SRF Redovisningskonsulterna */}
               <div className="pt-2">
-                <a 
-                  href="https://www.srfkonsult.se" 
-                  target="_blank" 
+                <a
+                  href="https://www.srfkonsult.se"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-center space-x-3 text-slate-600 hover:text-slate-800 transition-colors"
                 >
-                  <div className="w-10 h-10 bg-slate-700/20 rounded flex items-center justify-center group-hover:bg-slate-700/40 transition-colors">
-                    <Shield className="w-6 h-6 text-slate-700" />
+                  <div className="w-10 h-10 flex items-center justify-center">
+                    <img
+                      src={srfLogo}
+                      alt="SRF Redovisningskonsulterna logo"
+                      className="w-full h-full object-contain"
+                    />
                   </div>
                   <div>
                     <p className="font-semibold text-slate-800">SRF Redovisningskonsulterna</p>
@@ -149,14 +160,18 @@ export const Footer = ({ onNavigate }: FooterProps) => {
 
               {/* Accountec */}
               <div className="pt-2">
-                <a 
-                  href="https://www.accountec.se" 
-                  target="_blank" 
+                <a
+                  href="https://www.accountec.se"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-center space-x-3 text-slate-600 hover:text-slate-800 transition-colors"
                 >
-                  <div className="w-10 h-10 bg-slate-700/20 rounded flex items-center justify-center group-hover:bg-slate-700/40 transition-colors">
-                    <Shield className="w-6 h-6 text-slate-700" />
+                  <div className="w-10 h-10 flex items-center justify-center">
+                    <img
+                      src={accountecLogo}
+                      alt="Accountec logo"
+                      className="w-full h-full object-contain"
+                    />
                   </div>
                   <div>
                     <p className="font-semibold text-slate-800">Accountec</p>
@@ -172,7 +187,7 @@ export const Footer = ({ onNavigate }: FooterProps) => {
 
         {/* Bottom Bar */}
         <div className="border-t border-slate-400/30 pt-8 text-center text-sm text-slate-600">
-          <p>&copy; {new Date().getFullYear()} Delita Advise AB. Alla rättigheter förbehållna. | Hemsida producerad av <a href="https://oscarjohansson.eu/" target="_blank" rel="noopener noreferrer" className="font-bold text-slate-700 hover:text-slate-900 underline decoration-slate-400 hover:decoration-slate-700 transition-all duration-300">Oscar Johansson</a></p>
+          <p>&copy; {new Date().getFullYear()} Delita Advise. Alla rättigheter förbehållna. | Hemsida producerad av <a href="https://oscarjohansson.eu/" target="_blank" rel="noopener noreferrer" className="font-bold text-slate-700 hover:text-slate-900 underline decoration-slate-400 hover:decoration-slate-700 transition-all duration-300">Oscar Johansson</a></p>
         </div>
       </div>
     </footer>

@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Users, Calculator, TrendingUp } from 'lucide-react';
+import pexelsYankrukovImage from '../Delita bilder/Nya/pexels-yankrukov-7691673.jpg';
 
 interface ServicesProps {
   onNavigate: (path: string) => void;
@@ -13,7 +14,7 @@ const services = [
     title: "Löner Medarbetare",
     description: "Professionell och säker lönehantering som garanterar att dina medarbetare får rätt lön i rätt tid.",
     link: "/tjanster/loner-medarbetare",
-    image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&q=80&w=800",
+    image: pexelsYankrukovImage,
     shortDesc: "Trygg lönehantering"
   },
   {

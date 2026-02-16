@@ -106,7 +106,7 @@ export const About = ({ onNavigate }: AboutProps) => {
                   På Delita Advise arbetar vi för att förenkla det komplexa. Vi grundades med visionen att erbjuda personlig, tillgänglig och professionell ekonomisk rådgivning till företag i alla storlekar.
                 </p>
                 <p>
-                  Vårt fokus ligger på att bygga långsiktiga relationer baserade på förtroende och expertis. Vi tror att en trygg ekonomi är grunden för allt framgångsrikt företagande, och we finns här för att lägga den grunden tillsammans med er.
+                  Vårt fokus ligger på att bygga långsiktiga relationer baserade på förtroende och expertis. Vi tror att en trygg ekonomi är grunden för allt framgångsrikt företagande, och vi finns här för att lägga den grunden tillsammans med er.
                 </p>
               </div>
             </motion.div>
@@ -202,13 +202,13 @@ export const About = ({ onNavigate }: AboutProps) => {
               <div className="bg-slate-50 p-8 rounded-sm border border-slate-100">
                 <h3 className="font-serif text-xl font-semibold mb-4 text-slate-700">Personligt engagemang</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  Trots våra digitala verktyg tummar vi aldrig på den personliga kontakten. Hos oss får du en dedikerad rådgivare som lär känna din verksamhet på dubet.
+                  Trots våra digitala verktyg tummar vi aldrig på den personliga kontakten. Hos oss får du en dedikerad rådgivare som lär känna din verksamhet på djupet.
                 </p>
               </div>
               <div className="bg-slate-50 p-8 rounded-sm border border-slate-100">
                 <h3 className="font-serif text-xl font-semibold mb-4 text-slate-700">Lokalt & Nationellt</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  Med bas i Malmö har vi en stark lokal förankring, mas tack vare våra digitala arbetssätt hjälper vi kunder över hela Sverige med samma höga servicenivå.
+                  Med bas i Malmö har vi en stark lokal förankring, men tack vare våra digitala arbetssätt hjälper vi kunder över hela Sverige med samma höga servicenivå.
                 </p>
               </div>
               <div className="bg-slate-50 p-8 rounded-sm border border-slate-100">
@@ -223,7 +223,7 @@ export const About = ({ onNavigate }: AboutProps) => {
       </section>
 
       {/* TEAM SECTION */}
-      <section className="py-24 bg-slate-50 border-t border-slate-100">
+      <section className="hidden py-24 bg-slate-50 border-t border-slate-100">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <span className="text-slate-700 text-sm font-bold tracking-[0.2em] uppercase mb-4 block">

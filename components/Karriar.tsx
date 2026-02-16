@@ -103,10 +103,10 @@ export const Karriar = ({ onNavigate }: KarriarProps) => {
             className="prose prose-lg prose-slate mx-auto"
           >
             <h2 className="font-serif text-3xl md:text-4xl text-slate-900 mb-8">Arbeta med oss</h2>
-            <p className="text-xl text-slate-600 leading-relaxed font-light mb-8">
+            <p className="text-slate-600 leading-relaxed font-light mb-8">
               På Delita Advise är vi mer än bara kollegor – vi är ett team som drivs av passion för ekonomi och viljan att göra skillnad för våra kunder. Vi tror på en arbetsplats där innovation möter tradition, och där varje medarbetare får utrymme att växa.
             </p>
-            <p className="text-slate-600 leading-loose">
+            <p className="text-slate-600 leading-relaxed">
               Vi söker ständigt efter talanger som delar våra värderingar om professionalism, engagemang och personlig service. Hos oss får du arbeta i en modern, digital miljö med spännande uppdrag och härliga kollegor.
             </p>
           </motion.div>
@@ -181,7 +181,7 @@ export const Karriar = ({ onNavigate }: KarriarProps) => {
                   <Mail className="w-5 h-5 mt-1 shrink-0 text-slate-700" />
                   <div>
                     <p className="text-sm font-medium text-slate-900">E-post</p>
-                    <a href="mailto:karriar@delita.se" className="text-sm hover:text-slate-700 transition-colors">karriar@delita.se</a>
+                    <a href="mailto:kontakt@delita.se" className="text-sm hover:text-slate-700 transition-colors">kontakt@delita.se</a>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3 text-slate-600">
