@@ -3,19 +3,19 @@ import { createPortal } from 'react-dom';
 import { Menu, X, ChevronDown, ChevronRight, Globe, User, Instagram, Facebook } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logoImage from '../Images:Logos/delita-advise-high-resolution-logo-transparent.png';
+import { useTranslation } from '../i18n';
 
 interface NavbarProps {
   onNavigate: (path: string) => void;
   currentRoute: string;
-  language: 'sv' | 'en';
-  onToggleLanguage: () => void;
 }
 
-export const Navbar = ({ onNavigate, currentRoute, language, onToggleLanguage }: NavbarProps) => {
+export const Navbar = ({ onNavigate, currentRoute }: NavbarProps) => {
+  const { language, toggleLanguage, t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isServicesOpen, setIsServicesOpen] = useState(false); // For mobile toggle
-  const [hoverServices, setHoverServices] = useState(false);   // For desktop hover
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [hoverServices, setHoverServices] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,7 +27,6 @@ export const Navbar = ({ onNavigate, currentRoute, language, onToggleLanguage }:
 
   useEffect(() => {
     if (isMobileMenuOpen) {
-      // Lock body scroll and remember scroll position
       document.body.classList.add('menu-open');
       document.body.style.overflow = 'hidden';
       document.body.style.position = 'fixed';
@@ -59,17 +58,17 @@ export const Navbar = ({ onNavigate, currentRoute, language, onToggleLanguage }:
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white/95 backdrop-blur-md shadow-sm py-4' 
+        isScrolled
+          ? 'bg-white/95 backdrop-blur-md shadow-sm py-4'
           : 'bg-white/80 backdrop-blur-sm py-6'
       }`}
     >
       <div className="max-w-[1400px] mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
         <button onClick={() => handleNavClick('/')} className="flex items-center group shrink-0 mr-8">
-          <img 
-            src={logoImage} 
-            alt="Delita Advise" 
+          <img
+            src={logoImage}
+            alt="Delita Advise"
             className="h-10 md:h-12 w-auto transition-opacity group-hover:opacity-80"
           />
         </button>
@@ -77,7 +76,7 @@ export const Navbar = ({ onNavigate, currentRoute, language, onToggleLanguage }:
         {/* Desktop Menu - Center */}
         <div className="hidden lg:flex items-center space-x-8 flex-1 justify-center">
           {/* Services Dropdown */}
-          <div 
+          <div
             className="relative"
             onMouseEnter={() => setHoverServices(true)}
             onMouseLeave={() => setHoverServices(false)}
@@ -88,10 +87,10 @@ export const Navbar = ({ onNavigate, currentRoute, language, onToggleLanguage }:
               }`}
               onClick={(e) => e.preventDefault()}
             >
-              Tjänster
+              {t('nav.services')}
               <ChevronDown className={`w-4 h-4 ml-1 transition-transform duration-200 ${hoverServices ? 'rotate-180' : ''}`} />
             </button>
-            
+
             <AnimatePresence>
               {hoverServices && (
                 <motion.div
@@ -108,12 +107,12 @@ export const Navbar = ({ onNavigate, currentRoute, language, onToggleLanguage }:
                             setHoverServices(false);
                         }}
                         className={`block w-full text-left px-6 py-3 text-sm transition-colors ${
-                          isActive('/tjanster/loner-medarbetare') 
-                            ? 'bg-slate-50 text-slate-700 font-medium' 
+                          isActive('/tjanster/loner-medarbetare')
+                            ? 'bg-slate-50 text-slate-700 font-medium'
                             : 'text-slate-600 hover:bg-slate-50 hover:text-slate-700'
                         }`}
                       >
-                        Löner Medarbetare
+                        {t('nav.payroll')}
                       </button>
                       <button
                         onClick={() => {
@@ -121,12 +120,12 @@ export const Navbar = ({ onNavigate, currentRoute, language, onToggleLanguage }:
                             setHoverServices(false);
                         }}
                         className={`block w-full text-left px-6 py-3 text-sm transition-colors ${
-                          isActive('/tjanster/redovisning-beskattning') 
-                            ? 'bg-slate-50 text-slate-700 font-medium' 
+                          isActive('/tjanster/redovisning-beskattning')
+                            ? 'bg-slate-50 text-slate-700 font-medium'
                             : 'text-slate-600 hover:bg-slate-50 hover:text-slate-700'
                         }`}
                       >
-                        Redovisning & Beskattning
+                        {t('nav.accounting')}
                       </button>
                       <button
                         onClick={() => {
@@ -134,12 +133,12 @@ export const Navbar = ({ onNavigate, currentRoute, language, onToggleLanguage }:
                             setHoverServices(false);
                         }}
                         className={`block w-full text-left px-6 py-3 text-sm transition-colors ${
-                          isActive('/tjanster/radgivning') 
-                            ? 'bg-slate-50 text-slate-700 font-medium' 
+                          isActive('/tjanster/radgivning')
+                            ? 'bg-slate-50 text-slate-700 font-medium'
                             : 'text-slate-600 hover:bg-slate-50 hover:text-slate-700'
                         }`}
                       >
-                        Rådgivning
+                        {t('nav.advisory')}
                       </button>
                    </div>
                 </motion.div>
@@ -153,7 +152,7 @@ export const Navbar = ({ onNavigate, currentRoute, language, onToggleLanguage }:
               isActive('/om-oss') ? 'text-slate-700 font-semibold underline underline-offset-4' : 'text-slate-600 hover:text-slate-700'
             }`}
           >
-            Om oss
+            {t('nav.about')}
           </button>
 
           <button
@@ -162,25 +161,25 @@ export const Navbar = ({ onNavigate, currentRoute, language, onToggleLanguage }:
               isActive('/karriar') ? 'text-slate-700 font-semibold underline underline-offset-4' : 'text-slate-600 hover:text-slate-700'
             }`}
           >
-            Karriär
+            {t('nav.career')}
           </button>
-          
+
           <button
             onClick={() => handleNavClick('/kontakt')}
             className={`text-sm font-medium transition-colors tracking-wide ${
               isActive('/kontakt') ? 'text-slate-700 font-semibold underline underline-offset-4' : 'text-slate-600 hover:text-slate-700'
             }`}
           >
-            Kontakt
+            {t('nav.contact')}
           </button>
         </div>
 
         {/* Right Side - Actions */}
         <div className="hidden lg:flex items-center space-x-6 shrink-0">
-          
+
           {/* Language Selector */}
-          <button 
-            onClick={onToggleLanguage}
+          <button
+            onClick={toggleLanguage}
             className="text-sm font-medium text-slate-600 hover:text-slate-700 transition-colors flex items-center space-x-1"
           >
             <span className={language === 'sv' ? 'font-bold text-slate-700' : ''}>SV</span>
@@ -196,7 +195,7 @@ export const Navbar = ({ onNavigate, currentRoute, language, onToggleLanguage }:
             }`}
           >
             <User className="w-4 h-4" />
-            <span>Logga in</span>
+            <span>{t('nav.login')}</span>
           </button>
 
           {/* Boka Möte Button */}
@@ -204,7 +203,7 @@ export const Navbar = ({ onNavigate, currentRoute, language, onToggleLanguage }:
             onClick={() => handleNavClick('/boka-mote')}
             className="px-6 py-2.5 bg-delita-navy text-slate-800 text-sm font-medium rounded-full hover:bg-[#D6CFC3] transition-colors duration-300 shadow-lg shadow-delita-navy/20 hover:shadow-xl"
           >
-            Boka möte
+            {t('nav.bookMeeting')}
           </button>
         </div>
 
@@ -225,7 +224,7 @@ export const Navbar = ({ onNavigate, currentRoute, language, onToggleLanguage }:
               id="delita-mobile-menu-overlay"
               role="dialog"
               aria-modal="true"
-              aria-label="Meny"
+              aria-label={t('nav.mainMenu')}
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 40 }}
@@ -247,7 +246,7 @@ export const Navbar = ({ onNavigate, currentRoute, language, onToggleLanguage }:
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-colors touch-manipulation"
-                  aria-label="Stäng meny"
+                  aria-label={t('nav.closeMenu')}
                 >
                   <X size={24} aria-hidden strokeWidth={1.5} />
                 </button>
@@ -256,7 +255,7 @@ export const Navbar = ({ onNavigate, currentRoute, language, onToggleLanguage }:
               {/* Centered navigation */}
               <nav
                 className="flex-1 flex flex-col items-center justify-center px-8 space-y-8"
-                aria-label="Huvudmeny"
+                aria-label={t('nav.mainMenu')}
               >
                 {/* Hem */}
                 <button
@@ -265,7 +264,7 @@ export const Navbar = ({ onNavigate, currentRoute, language, onToggleLanguage }:
                     isActive('/') ? 'font-semibold underline underline-offset-8' : 'font-normal'
                   }`}
                 >
-                  Hem
+                  {t('nav.home')}
                 </button>
 
                 {/* Tjänster with expandable submenu */}
@@ -276,7 +275,7 @@ export const Navbar = ({ onNavigate, currentRoute, language, onToggleLanguage }:
                       isServicesActive ? 'font-semibold underline underline-offset-8' : 'font-normal'
                     }`}
                   >
-                    <span>Tjänster</span>
+                    <span>{t('nav.services')}</span>
                     <ChevronDown
                       className={`w-5 h-5 transition-transform duration-200 ${
                         isServicesOpen ? 'rotate-180' : ''
@@ -301,7 +300,7 @@ export const Navbar = ({ onNavigate, currentRoute, language, onToggleLanguage }:
                               : 'font-normal'
                           }`}
                         >
-                          Löner Medarbetare
+                          {t('nav.payroll')}
                         </button>
                         <button
                           onClick={() => handleNavClick('/tjanster/redovisning-beskattning')}
@@ -311,7 +310,7 @@ export const Navbar = ({ onNavigate, currentRoute, language, onToggleLanguage }:
                               : 'font-normal'
                           }`}
                         >
-                          Redovisning & Beskattning
+                          {t('nav.accounting')}
                         </button>
                         <button
                           onClick={() => handleNavClick('/tjanster/radgivning')}
@@ -321,7 +320,7 @@ export const Navbar = ({ onNavigate, currentRoute, language, onToggleLanguage }:
                               : 'font-normal'
                           }`}
                         >
-                          Rådgivning
+                          {t('nav.advisory')}
                         </button>
                       </motion.div>
                     )}
@@ -335,7 +334,7 @@ export const Navbar = ({ onNavigate, currentRoute, language, onToggleLanguage }:
                     isActive('/om-oss') ? 'font-semibold underline underline-offset-8' : 'font-normal'
                   }`}
                 >
-                  Om oss
+                  {t('nav.about')}
                 </button>
 
                 {/* Karriär */}
@@ -347,7 +346,7 @@ export const Navbar = ({ onNavigate, currentRoute, language, onToggleLanguage }:
                       : 'font-normal'
                   }`}
                 >
-                  Karriär
+                  {t('nav.career')}
                 </button>
 
                 {/* Kontakt */}
@@ -359,7 +358,7 @@ export const Navbar = ({ onNavigate, currentRoute, language, onToggleLanguage }:
                       : 'font-normal'
                   }`}
                 >
-                  Kontakt
+                  {t('nav.contact')}
                 </button>
               </nav>
 
@@ -367,7 +366,7 @@ export const Navbar = ({ onNavigate, currentRoute, language, onToggleLanguage }:
               <div className="flex-shrink-0 w-full px-8 pb-8 pt-4 space-y-4">
                 <div className="flex items-center justify-between">
                   <button
-                    onClick={onToggleLanguage}
+                    onClick={toggleLanguage}
                     className="flex items-center gap-2 text-sm font-medium text-slate-800 touch-manipulation"
                   >
                     <Globe className="w-4 h-4" />
@@ -379,7 +378,7 @@ export const Navbar = ({ onNavigate, currentRoute, language, onToggleLanguage }:
                     className="flex items-center gap-2 text-sm text-slate-600 hover:text-slate-900 touch-manipulation"
                   >
                     <User className="w-4 h-4" />
-                    <span>Logga in</span>
+                    <span>{t('nav.login')}</span>
                   </button>
                 </div>
 
@@ -387,7 +386,7 @@ export const Navbar = ({ onNavigate, currentRoute, language, onToggleLanguage }:
                   onClick={() => handleNavClick('/boka-mote')}
                   className="w-full py-4 px-6 bg-[#E6DED1] text-slate-900 text-sm font-semibold uppercase tracking-[0.2em] rounded-full hover:bg-[#DDD6C9] active:bg-[#D6CFC3] transition-colors touch-manipulation"
                 >
-                  Boka möte
+                  {t('nav.bookMeeting')}
                 </button>
               </div>
             </motion.div>

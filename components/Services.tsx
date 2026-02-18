@@ -3,39 +3,42 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Users, Calculator, TrendingUp } from 'lucide-react';
 import pexelsYankrukovImage from '../Delita bilder/Nya/pexels-yankrukov-7691673.jpg';
+import { useTranslation } from '../i18n';
 
 interface ServicesProps {
   onNavigate: (path: string) => void;
 }
 
-const services = [
-  {
-    icon: Users,
-    title: "Löner Medarbetare",
-    description: "Professionell och säker lönehantering som garanterar att dina medarbetare får rätt lön i rätt tid.",
-    link: "/tjanster/loner-medarbetare",
-    image: pexelsYankrukovImage,
-    shortDesc: "Trygg lönehantering"
-  },
-  {
-    icon: Calculator,
-    title: "Redovisning & Beskattning",
-    description: "Komplett hantering av bokföring, bokslut och skattedeklarationer för en optimerad och trygg ekonomi.",
-    link: "/tjanster/redovisning-beskattning",
-    image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=800",
-    shortDesc: "Full kontroll"
-  },
-  {
-    icon: TrendingUp,
-    title: "Rådgivning",
-    description: "Strategisk rådgivning som hjälper dig att fatta rätt beslut för ditt företags framtida tillväxt.",
-    link: "/tjanster/radgivning",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800",
-    shortDesc: "Strategisk tillväxt"
-  }
-];
-
 export const Services = ({ onNavigate }: ServicesProps) => {
+  const { t } = useTranslation();
+
+  const services = [
+    {
+      icon: Users,
+      title: t('services.payrollTitle'),
+      description: t('services.payrollDesc'),
+      link: "/tjanster/loner-medarbetare",
+      image: pexelsYankrukovImage,
+      shortDesc: t('services.payrollShort'),
+    },
+    {
+      icon: Calculator,
+      title: t('services.accountingTitle'),
+      description: t('services.accountingDesc'),
+      link: "/tjanster/redovisning-beskattning",
+      image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=800",
+      shortDesc: t('services.accountingShort'),
+    },
+    {
+      icon: TrendingUp,
+      title: t('services.advisoryTitle'),
+      description: t('services.advisoryDesc'),
+      link: "/tjanster/radgivning",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800",
+      shortDesc: t('services.advisoryShort'),
+    },
+  ];
+
   return (
     <section id="tjanster" className="py-24 md:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-6">
@@ -47,10 +50,10 @@ export const Services = ({ onNavigate }: ServicesProps) => {
           className="mb-16 md:mb-24 text-center"
         >
           <span className="text-slate-600 text-xs font-bold tracking-[0.2em] uppercase mb-4 block">
-            Våra Expertområden
+            {t('services.label')}
           </span>
           <h2 className="font-serif text-4xl md:text-6xl text-slate-900">
-            Tjänster
+            {t('services.heading')}
           </h2>
         </motion.div>
 
@@ -70,14 +73,14 @@ export const Services = ({ onNavigate }: ServicesProps) => {
             >
               {/* Image Section (Top Half) */}
               <div className="relative h-1/2 overflow-visible">
-                <img 
-                  src={service.image} 
-                  alt={service.title} 
+                <img
+                  src={service.image}
+                  alt={service.title}
                   loading="lazy"
                   decoding="async"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                
+
                 {/* Icon Badge */}
                 <div className="absolute bottom-0 left-8 translate-y-1/2 bg-white p-4 rounded-full shadow-lg z-10">
                    <service.icon className="w-6 h-6 text-slate-700" />
@@ -93,7 +96,7 @@ export const Services = ({ onNavigate }: ServicesProps) => {
                     {service.description}
                  </p>
                  <div className="flex items-center text-sm font-bold tracking-widest uppercase text-slate-700 mt-auto">
-                    <span className="border-b border-transparent group-hover:border-slate-700 transition-all duration-300 pb-1">Läs mer</span>
+                    <span className="border-b border-transparent group-hover:border-slate-700 transition-all duration-300 pb-1">{t('services.readMore')}</span>
                     <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-2" />
                   </div>
               </div>

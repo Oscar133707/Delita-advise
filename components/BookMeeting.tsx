@@ -1,45 +1,48 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Video, Building, Clock, CheckCircle, ArrowLeft, Send } from 'lucide-react';
+import { useTranslation } from '../i18n';
 
 interface BookMeetingProps {
   onNavigate: (path: string) => void;
 }
 
 export const BookMeeting = ({ onNavigate }: BookMeetingProps) => {
+  const { t } = useTranslation();
+
+  const meetingTypes = [
+    {
+      id: 'phone',
+      icon: Phone,
+      title: t('bookMeeting.phoneTitle'),
+      duration: t('bookMeeting.phoneDuration'),
+      desc: t('bookMeeting.phoneDesc'),
+    },
+    {
+      id: 'video',
+      icon: Video,
+      title: t('bookMeeting.videoTitle'),
+      duration: t('bookMeeting.videoDuration'),
+      desc: t('bookMeeting.videoDesc'),
+    },
+    {
+      id: 'office',
+      icon: Building,
+      title: t('bookMeeting.officeTitle'),
+      duration: t('bookMeeting.officeDuration'),
+      desc: t('bookMeeting.officeDesc'),
+    },
+  ];
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     company: '',
-    meetingType: 'Videomöte',
+    meetingType: 'video',
     message: ''
   });
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
-
-  const meetingTypes = [
-    {
-      id: 'Telefonkonsultation',
-      icon: Phone,
-      title: 'Telefon konsultation',
-      duration: '15-30 minuter',
-      desc: 'Kostnadsfri telefonkonsultation för snabba frågor.'
-    },
-    {
-      id: 'Videomöte',
-      icon: Video,
-      title: 'Videomöte',
-      duration: '30-60 minuter',
-      desc: 'Digitalt möte via Teams eller Zoom.'
-    },
-    {
-      id: 'Kontorsmöte',
-      icon: Building,
-      title: 'Kontorsmöte',
-      duration: '60 minuter',
-      desc: 'Besök oss på vårt kontor i Malmö.'
-    }
-  ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -61,29 +64,31 @@ export const BookMeeting = ({ onNavigate }: BookMeetingProps) => {
     }
   };
 
+  const selectedType = meetingTypes.find(m => m.id === formData.meetingType);
+
   return (
     <div className="min-h-screen bg-slate-50 font-sans pt-20">
       {/* Header Section */}
       <div className="bg-white border-b border-slate-100 pb-16 pt-12 text-center px-6">
-        <motion.h1 
+        <motion.h1
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             className="font-serif text-4xl md:text-5xl text-slate-900 mb-4"
         >
-            Boka ett möte
+            {t('bookMeeting.heading')}
         </motion.h1>
-        <motion.p 
+        <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
             className="text-slate-600 text-lg font-light max-w-2xl mx-auto"
         >
-            Låt oss diskutera hur vi kan hjälpa ditt företag framåt. Fyll i formuläret så återkommer vi för att hitta en tid som passar.
+            {t('bookMeeting.subtitle')}
         </motion.p>
       </div>
 
       <div className="max-w-6xl mx-auto px-6 py-16">
-        
+
         {/* Meeting Options */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             {meetingTypes.map((type, index) => (
@@ -110,7 +115,7 @@ export const BookMeeting = ({ onNavigate }: BookMeetingProps) => {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
             {/* Booking Form */}
-            <motion.div 
+            <motion.div
                 id="booking-form"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -122,53 +127,53 @@ export const BookMeeting = ({ onNavigate }: BookMeetingProps) => {
                         <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
                             <CheckCircle className="w-10 h-10" />
                         </div>
-                        <h3 className="font-serif text-3xl text-slate-900 mb-4">Tack för din förfrågan!</h3>
-                        <p className="text-slate-600 text-lg mb-8">Vi har mottagit dina önskemål och återkommer inom kort med förslag på tider som passar.</p>
-                        <button 
+                        <h3 className="font-serif text-3xl text-slate-900 mb-4">{t('bookMeeting.successHeading')}</h3>
+                        <p className="text-slate-600 text-lg mb-8">{t('bookMeeting.successText')}</p>
+                        <button
                             onClick={() => onNavigate('/')}
                             className="px-8 py-3 bg-delita-navy text-slate-800 rounded-full hover:bg-[#D6CFC3] transition-colors"
                         >
-                            Tillbaka till startsidan
+                            {t('bookMeeting.backToHome')}
                         </button>
                     </div>
                 ) : (
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="flex items-center space-x-2 text-slate-700 font-medium mb-4 bg-slate-50 p-4 rounded-lg border border-slate-100">
                             <CheckCircle className="w-5 h-5" />
-                            <span>Vald mötestyp: {formData.meetingType}</span>
+                            <span>{t('bookMeeting.selectedType')} {selectedType?.title || formData.meetingType}</span>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-2">Namn *</label>
-                                <input type="text" name="name" required value={formData.name} onChange={handleChange} className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-delita-navy focus:border-transparent outline-none transition-all" placeholder="Ditt namn" />
+                                <label className="block text-sm font-medium text-slate-700 mb-2">{t('bookMeeting.labelName')} *</label>
+                                <input type="text" name="name" required value={formData.name} onChange={handleChange} className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-delita-navy focus:border-transparent outline-none transition-all" placeholder={t('bookMeeting.placeholderName')} />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-2">E-post *</label>
-                                <input type="email" name="email" required value={formData.email} onChange={handleChange} className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-delita-navy focus:border-transparent outline-none transition-all" placeholder="namn@foretag.se" />
+                                <label className="block text-sm font-medium text-slate-700 mb-2">{t('bookMeeting.labelEmail')} *</label>
+                                <input type="email" name="email" required value={formData.email} onChange={handleChange} className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-delita-navy focus:border-transparent outline-none transition-all" placeholder={t('bookMeeting.placeholderEmail')} />
                             </div>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-2">Telefon *</label>
-                                <input type="tel" name="phone" required value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-delita-navy focus:border-transparent outline-none transition-all" placeholder="070-123 45 67" />
+                                <label className="block text-sm font-medium text-slate-700 mb-2">{t('bookMeeting.labelPhone')} *</label>
+                                <input type="tel" name="phone" required value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-delita-navy focus:border-transparent outline-none transition-all" placeholder={t('bookMeeting.placeholderPhone')} />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-2">Företag</label>
-                                <input type="text" name="company" value={formData.company} onChange={handleChange} className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-delita-navy focus:border-transparent outline-none transition-all" placeholder="Företagsnamn AB" />
+                                <label className="block text-sm font-medium text-slate-700 mb-2">{t('bookMeeting.labelCompany')}</label>
+                                <input type="text" name="company" value={formData.company} onChange={handleChange} className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-delita-navy focus:border-transparent outline-none transition-all" placeholder={t('bookMeeting.placeholderCompany')} />
                             </div>
                         </div>
-                        
+
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-2">Meddelande / Önskemål om tid</label>
-                            <textarea name="message" rows={5} value={formData.message} onChange={handleChange} className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-delita-navy focus:border-transparent outline-none transition-all resize-none" placeholder="Berätta kort vad du vill diskutera och om du har önskemål om specifika dagar eller tider..."></textarea>
+                            <label className="block text-sm font-medium text-slate-700 mb-2">{t('bookMeeting.labelMessage')}</label>
+                            <textarea name="message" rows={5} value={formData.message} onChange={handleChange} className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-delita-navy focus:border-transparent outline-none transition-all resize-none" placeholder={t('bookMeeting.placeholderMessage')}></textarea>
                         </div>
-                        
+
                         <button type="submit" disabled={status === 'submitting'} className="w-full py-4 bg-delita-navy text-slate-800 font-medium rounded-full hover:bg-[#D6CFC3] transition-all shadow-lg text-lg flex items-center justify-center space-x-2">
                             {status === 'submitting' ? (
-                                <span>Skickar...</span>
+                                <span>{t('bookMeeting.sending')}</span>
                             ) : (
                                 <>
-                                    <span>Skicka bokningsförfrågan</span>
+                                    <span>{t('bookMeeting.sendRequest')}</span>
                                     <Send className="w-5 h-5" />
                                 </>
                             )}
@@ -180,9 +185,9 @@ export const BookMeeting = ({ onNavigate }: BookMeetingProps) => {
             {/* Sidebar Info */}
              <div className="lg:col-span-4 space-y-8">
                 <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
-                    <h3 className="font-serif text-xl font-medium text-slate-900 mb-4">Alternativ kontakt</h3>
-                    <p className="text-slate-600 mb-6 font-light">Föredrar du att kontakta oss direkt istället för att använda formuläret?</p>
-                    
+                    <h3 className="font-serif text-xl font-medium text-slate-900 mb-4">{t('bookMeeting.altContactHeading')}</h3>
+                    <p className="text-slate-600 mb-6 font-light">{t('bookMeeting.altContactText')}</p>
+
                     <div className="space-y-4">
                         <a href="tel:+46703626744" className="flex items-center space-x-3 text-slate-700 hover:text-slate-700 transition-colors">
                             <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-700">
@@ -201,7 +206,7 @@ export const BookMeeting = ({ onNavigate }: BookMeetingProps) => {
                     <div className="mt-8 pt-8 border-t border-slate-100">
                         <button onClick={() => onNavigate('/kontakt')} className="flex items-center text-sm font-medium text-slate-500 hover:text-slate-700 transition-colors">
                             <ArrowLeft className="w-4 h-4 mr-2" />
-                            Till kontaktsidan
+                            {t('bookMeeting.toContactPage')}
                         </button>
                     </div>
                 </div>

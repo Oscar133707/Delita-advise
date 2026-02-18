@@ -1,38 +1,41 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { HeartHandshake, Award, Monitor, BadgeCheck } from 'lucide-react';
-
-const features = [
-  {
-    icon: HeartHandshake,
-    title: "Personlig service",
-    description: "Individanpassade lösningar för din verksamhet."
-  },
-  {
-    icon: Award,
-    title: "Expertis och erfarenhet",
-    description: "Mångårig kompetens inom ekonomi och rådgivning."
-  },
-  {
-    icon: Monitor,
-    title: "Digital närvaro",
-    description: "Snabb och smidig kontakt digitalt."
-  },
-  {
-    icon: BadgeCheck,
-    title: "Prisvärd kvalitet",
-    description: "Hög kvalitet till rimliga priser."
-  }
-];
+import { useTranslation } from '../i18n';
 
 export const WhyChooseUs = () => {
+  const { t } = useTranslation();
+
+  const features = [
+    {
+      icon: HeartHandshake,
+      title: t('whyChooseUs.feature1title'),
+      description: t('whyChooseUs.feature1desc'),
+    },
+    {
+      icon: Award,
+      title: t('whyChooseUs.feature2title'),
+      description: t('whyChooseUs.feature2desc'),
+    },
+    {
+      icon: Monitor,
+      title: t('whyChooseUs.feature3title'),
+      description: t('whyChooseUs.feature3desc'),
+    },
+    {
+      icon: BadgeCheck,
+      title: t('whyChooseUs.feature4title'),
+      description: t('whyChooseUs.feature4desc'),
+    },
+  ];
+
   return (
     <section className="py-24 relative overflow-hidden bg-slate-50">
       {/* Subtle textured background or gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-white to-slate-50 opacity-50" />
-      
+
       <div className="relative z-10 max-w-7xl mx-auto px-6">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -40,14 +43,14 @@ export const WhyChooseUs = () => {
           className="text-center mb-20 max-w-3xl mx-auto"
         >
           <span className="text-slate-700 text-xs font-bold tracking-[0.2em] uppercase mb-4 block">
-            Vårt Löfte
+            {t('whyChooseUs.label')}
           </span>
           <h2 className="font-serif text-3xl md:text-5xl text-slate-900 mb-8">
-            Varför välja Delita Advise?
+            {t('whyChooseUs.heading')}
           </h2>
           <div className="w-20 h-1 bg-delita-navy mx-auto mb-8" />
           <p className="text-slate-600 text-lg md:text-xl font-light leading-relaxed">
-            Vi kombinerar expertis, engagemang och digital närvaro för att ge dig skräddarsydda lösningar som passar dina behov.
+            {t('whyChooseUs.subtitle')}
           </p>
         </motion.div>
 

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { LanguageProvider } from './i18n';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { MainContent } from './components/MainContent';
@@ -16,7 +17,6 @@ import { BookMeeting } from './components/BookMeeting';
 
 export default function App() {
   const [currentRoute, setCurrentRoute] = useState('/');
-  const [language, setLanguage] = useState<'sv' | 'en'>('sv');
 
   const navigateTo = (path: string) => {
     setCurrentRoute(path);
@@ -24,48 +24,48 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col font-sans selection:bg-delita-navy selection:text-slate-800">
-      <Navbar 
-        onNavigate={navigateTo} 
-        currentRoute={currentRoute} 
-        language={language}
-        onToggleLanguage={() => setLanguage(prev => prev === 'sv' ? 'en' : 'sv')}
-      />
-      <main className="flex-grow">
-        {currentRoute === '/' ? (
-          <>
-            <Hero onNavigate={navigateTo} />
-            <MainContent />
-            <WhyChooseUs />
-            <Services onNavigate={navigateTo} />
-          </>
-        ) : currentRoute === '/om-oss' ? (
-          <About onNavigate={navigateTo} />
-        ) : currentRoute === '/karriar' ? (
-          <Karriar onNavigate={navigateTo} />
-        ) : currentRoute === '/kontakt' ? (
-          <Contact onNavigate={navigateTo} />
-        ) : currentRoute === '/boka-mote' ? (
-          <BookMeeting onNavigate={navigateTo} />
-        ) : currentRoute === '/login' ? (
-          <Login onNavigate={navigateTo} />
-        ) : currentRoute === '/tjanster/loner-medarbetare' ? (
-          <Loner onNavigate={navigateTo} />
-        ) : currentRoute === '/tjanster/redovisning-beskattning' ? (
-          <Redovisning onNavigate={navigateTo} />
-        ) : currentRoute === '/tjanster/radgivning' ? (
-          <Radgivning onNavigate={navigateTo} />
-        ) : (
-          /* Fallback to home if route unknown */
-          <>
-             <Hero onNavigate={navigateTo} />
-             <MainContent />
-             <WhyChooseUs />
-             <Services onNavigate={navigateTo} />
-          </>
-        )}
-      </main>
-      <Footer onNavigate={navigateTo} />
-    </div>
+    <LanguageProvider>
+      <div className="min-h-screen flex flex-col font-sans selection:bg-delita-navy selection:text-slate-800">
+        <Navbar
+          onNavigate={navigateTo}
+          currentRoute={currentRoute}
+        />
+        <main className="flex-grow">
+          {currentRoute === '/' ? (
+            <>
+              <Hero onNavigate={navigateTo} />
+              <MainContent />
+              <WhyChooseUs />
+              <Services onNavigate={navigateTo} />
+            </>
+          ) : currentRoute === '/om-oss' ? (
+            <About onNavigate={navigateTo} />
+          ) : currentRoute === '/karriar' ? (
+            <Karriar onNavigate={navigateTo} />
+          ) : currentRoute === '/kontakt' ? (
+            <Contact onNavigate={navigateTo} />
+          ) : currentRoute === '/boka-mote' ? (
+            <BookMeeting onNavigate={navigateTo} />
+          ) : currentRoute === '/login' ? (
+            <Login onNavigate={navigateTo} />
+          ) : currentRoute === '/tjanster/loner-medarbetare' ? (
+            <Loner onNavigate={navigateTo} />
+          ) : currentRoute === '/tjanster/redovisning-beskattning' ? (
+            <Redovisning onNavigate={navigateTo} />
+          ) : currentRoute === '/tjanster/radgivning' ? (
+            <Radgivning onNavigate={navigateTo} />
+          ) : (
+            /* Fallback to home if route unknown */
+            <>
+               <Hero onNavigate={navigateTo} />
+               <MainContent />
+               <WhyChooseUs />
+               <Services onNavigate={navigateTo} />
+            </>
+          )}
+        </main>
+        <Footer onNavigate={navigateTo} />
+      </div>
+    </LanguageProvider>
   );
 }
