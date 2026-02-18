@@ -214,14 +214,14 @@ export const Loner = ({ onNavigate }: LonerProps) => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 onClick={() => onNavigate('/kontakt')}
-                className="inline-flex items-center justify-center px-10 py-4 bg-delita-navy text-slate-800 font-bold rounded-full hover:bg-[#D6CFC3] transition-colors shadow-lg"
+                className="inline-flex items-center justify-center px-10 py-4 sm:min-w-[200px] bg-delita-navy text-slate-800 font-bold rounded-full hover:bg-[#D6CFC3] transition-colors shadow-lg"
               >
                 <Phone className="w-4 h-4 mr-2" />
                 {t('loner.ctaButton')}
               </button>
               <button
                 onClick={() => onNavigate('/')}
-                className="inline-flex items-center justify-center px-10 py-4 border border-slate-300 text-slate-800 font-medium hover:bg-slate-100 transition-colors rounded-full"
+                className="inline-flex items-center justify-center px-10 py-4 sm:min-w-[200px] border border-slate-300 text-slate-800 font-medium hover:bg-slate-100 transition-colors rounded-full"
               >
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 {t('loner.back')}

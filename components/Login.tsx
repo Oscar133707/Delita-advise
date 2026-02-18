@@ -64,15 +64,15 @@ export const Login = ({ onNavigate }: LoginProps) => {
               transition={{ delay: index * 0.1 }}
               className="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 flex flex-col items-center text-center h-64 justify-between"
             >
-              <div className="w-full flex-grow flex flex-col justify-center">
-                <div className="w-20 h-20 mx-auto mb-6 flex items-center justify-center">
+              <div className="w-full">
+                <div className="w-16 h-16 mx-auto mb-3 flex items-center justify-center">
                   <img
                     src={portal.logo}
                     alt={`${portal.name} logo`}
                     className="w-full h-full object-contain"
                   />
                 </div>
-                <h3 className="font-serif text-2xl text-slate-900 mb-2 group-hover:text-slate-700 transition-colors">
+                <h3 className="font-serif text-2xl text-slate-900 mb-1 group-hover:text-slate-700 transition-colors">
                   {portal.name}
                 </h3>
                 <p className="text-slate-500 text-sm font-light">
@@ -94,17 +94,21 @@ export const Login = ({ onNavigate }: LoginProps) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="bg-delita-navy/5 rounded-2xl p-8 border border-delita-navy/10 flex flex-col items-center text-center h-64 justify-center"
+            className="bg-delita-navy/5 rounded-2xl p-8 border border-delita-navy/10 flex flex-col items-center text-center h-64 justify-between"
           >
-             <h3 className="font-serif text-xl text-slate-800 mb-4">{t('login.helpHeading')}</h3>
-             <p className="text-slate-600 text-sm mb-6">{t('login.helpText')}</p>
-             <a
-               href="mailto:kontakt@delita.se"
-               className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white text-slate-800 font-medium text-sm shadow-sm hover:shadow-md transition-all border border-slate-200 hover:border-slate-300"
-             >
-               <Mail className="w-4 h-4 mr-2" />
-               {t('login.contactSupport')}
-             </a>
+            <div className="w-full">
+              <h3 className="font-serif text-xl text-slate-800 mb-2">{t('login.helpHeading')}</h3>
+              <p className="text-slate-600 text-sm">{t('login.helpText')}</p>
+            </div>
+            <div className="w-full">
+              <a
+                href="mailto:kontakt@delita.se"
+                className="inline-flex items-center justify-center w-full py-3 px-6 rounded-full bg-white text-slate-800 font-medium text-sm shadow-sm hover:shadow-md transition-all border border-slate-200 hover:border-slate-300"
+              >
+                <Mail className="w-4 h-4 mr-2" />
+                {t('login.contactSupport')}
+              </a>
+            </div>
           </motion.div>
         </div>
 

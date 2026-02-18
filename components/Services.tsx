@@ -88,14 +88,16 @@ export const Services = ({ onNavigate }: ServicesProps) => {
               </div>
 
               {/* Content Section (Bottom Half) */}
-              <div className="p-8 pt-14 flex flex-col flex-grow bg-white">
-                 <h3 className="font-serif text-2xl font-medium mb-3 text-slate-900 group-hover:text-slate-700 transition-colors">
-                    {service.title}
-                 </h3>
-                 <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">
-                    {service.description}
-                 </p>
-                 <div className="flex items-center text-sm font-bold tracking-widest uppercase text-slate-700 mt-auto">
+              <div className="p-8 pt-14 flex flex-col flex-grow bg-white justify-between">
+                 <div>
+                   <h3 className="font-serif text-2xl font-medium mb-3 text-slate-900 group-hover:text-slate-700 transition-colors">
+                      {service.title}
+                   </h3>
+                   <p className="text-slate-600 text-sm leading-relaxed">
+                      {service.description}
+                   </p>
+                 </div>
+                 <div className="flex items-center text-sm font-bold tracking-widest uppercase text-slate-700">
                     <span className="border-b border-transparent group-hover:border-slate-700 transition-all duration-300 pb-1">{t('services.readMore')}</span>
                     <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-2" />
                   </div>

@@ -203,14 +203,14 @@ export const Emissioner = ({ onNavigate }: EmissionerProps) => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 onClick={() => onNavigate('/kontakt')}
-                className="inline-flex items-center justify-center px-8 py-3 bg-delita-navy text-slate-800 font-medium hover:bg-[#D6CFC3] transition-colors rounded-sm shadow-lg"
+                className="inline-flex items-center justify-center px-8 py-3 sm:min-w-[160px] bg-delita-navy text-slate-800 font-medium hover:bg-[#D6CFC3] transition-colors rounded-sm shadow-lg"
               >
                 <Phone className="w-4 h-4 mr-2" />
                 {t('emissioner.ctaButton')}
               </button>
               <button
                 onClick={() => onNavigate('/')}
-                className="inline-flex items-center justify-center px-8 py-3 border border-slate-300 text-slate-800 font-medium hover:bg-slate-100 transition-colors rounded-sm"
+                className="inline-flex items-center justify-center px-8 py-3 sm:min-w-[160px] border border-slate-300 text-slate-800 font-medium hover:bg-slate-100 transition-colors rounded-sm"
               >
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 {t('emissioner.backToServices')}
