@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Users, Calculator, TrendingUp } from 'lucide-react';
+import { ArrowRight, Users, Calculator, TrendingUp, Briefcase } from 'lucide-react';
 import pexelsYankrukovImage from '../Delita bilder/Nya/pexels-yankrukov-7691673.jpg';
 import { useTranslation } from '../i18n';
 
@@ -37,6 +37,14 @@ export const Services = ({ onNavigate }: ServicesProps) => {
       image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800",
       shortDesc: t('services.advisoryShort'),
     },
+    {
+      icon: Briefcase,
+      title: t('services.otherTitle'),
+      description: t('services.otherDesc'),
+      link: "#",
+      image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=800",
+      shortDesc: t('services.otherShort'),
+    },
   ];
 
   return (
@@ -57,7 +65,7 @@ export const Services = ({ onNavigate }: ServicesProps) => {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
           {services.map((service, index) => (
             <motion.div
               key={index}

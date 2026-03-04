@@ -172,32 +172,6 @@ export const Loner = ({ onNavigate }: LonerProps) => {
         </div>
       </section>
 
-      {/* PROCESS */}
-      <section className="py-24 bg-white">
-          <div className="max-w-6xl mx-auto px-6">
-             <div className="text-center mb-16">
-                 <h2 className="font-serif text-3xl md:text-4xl text-slate-900">{t('loner.processHeading')}</h2>
-             </div>
-
-             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-                {[
-                    { step: "01", titleKey: 'loner.step1title', descKey: 'loner.step1desc' },
-                    { step: "02", titleKey: 'loner.step2title', descKey: 'loner.step2desc' },
-                    { step: "03", titleKey: 'loner.step3title', descKey: 'loner.step3desc' },
-                    { step: "04", titleKey: 'loner.step4title', descKey: 'loner.step4desc' },
-                ].map((item, idx) => (
-                    <div key={idx} className="text-center group">
-                        <div className="w-16 h-16 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center mx-auto mb-6 text-xl font-serif font-bold text-slate-700 shadow-sm group-hover:bg-delita-navy group-hover:text-slate-800 transition-colors duration-300">
-                            {item.step}
-                        </div>
-                        <h4 className="font-serif text-xl font-medium mb-3">{t(item.titleKey)}</h4>
-                        <p className="text-slate-600 font-light">{t(item.descKey)}</p>
-                    </div>
-                ))}
-             </div>
-          </div>
-      </section>
-
       {/* CTA SECTION */}
       <section className="py-24 md:py-32 bg-white flex items-center justify-center">
         <div className="max-w-4xl mx-auto px-6 text-center text-slate-800">

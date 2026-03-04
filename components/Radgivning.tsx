@@ -138,6 +138,47 @@ export const Radgivning = ({ onNavigate }: RadgivningProps) => {
             </motion.div>
           </div>
 
+          {/* Features 3–6: text-only card grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
+            {[
+              {
+                titleKey: 'radgivning.feature3title',
+                items: ['radgivning.feature3item1', 'radgivning.feature3item2', 'radgivning.feature3item3'],
+              },
+              {
+                titleKey: 'radgivning.feature4title',
+                items: ['radgivning.feature4item1', 'radgivning.feature4item2', 'radgivning.feature4item3', 'radgivning.feature4item4'],
+              },
+              {
+                titleKey: 'radgivning.feature5title',
+                items: ['radgivning.feature5item1', 'radgivning.feature5item2', 'radgivning.feature5item3'],
+              },
+              {
+                titleKey: 'radgivning.feature6title',
+                items: ['radgivning.feature6item1', 'radgivning.feature6item2', 'radgivning.feature6item3'],
+              },
+            ].map((feature, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="bg-white p-8 rounded-sm shadow-sm border border-slate-100"
+              >
+                <h3 className="font-serif text-2xl text-slate-900 mb-6 border-l-4 border-delita-navy pl-4">{t(feature.titleKey)}</h3>
+                <ul className="space-y-3 text-slate-600 font-light">
+                  {feature.items.map((itemKey) => (
+                    <li key={itemKey} className="flex items-start">
+                      <CheckCircle2 className="w-5 h-5 text-slate-700 mr-3 mt-0.5 shrink-0"/>
+                      <span>{t(itemKey)}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+
         </div>
       </section>
 

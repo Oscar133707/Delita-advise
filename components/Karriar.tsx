@@ -105,7 +105,9 @@ export const Karriar = ({ onNavigate }: KarriarProps) => {
           >
             <h2 className="font-serif text-3xl md:text-4xl text-slate-900 mb-8">{t('career.introHeading')}</h2>
             <p className="text-slate-600 leading-relaxed font-light mb-8">{t('career.introP1')}</p>
-            <p className="text-slate-600 leading-relaxed">{t('career.introP2')}</p>
+            <p className="text-slate-600 leading-relaxed font-light mb-8">{t('career.introP2')}</p>
+            <p className="text-slate-600 leading-relaxed font-light mb-8">{t('career.introP3')}</p>
+            <p className="text-slate-600 leading-relaxed">{t('career.introP4')}</p>
           </motion.div>
         </div>
       </section>

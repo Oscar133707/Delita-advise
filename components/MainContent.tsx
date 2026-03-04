@@ -47,7 +47,7 @@ export const MainContent = () => {
             </span>
             <h2 className="font-serif text-3xl md:text-5xl text-slate-900 leading-tight">
               {t('mainContent.heading1')} <br />
-              <span className="italic text-slate-900">{t('mainContent.heading2')}</span>
+              <span className="text-slate-900">{t('mainContent.heading2')}</span>
             </h2>
 
             <div className="prose prose-lg prose-slate text-slate-600 leading-relaxed font-light">

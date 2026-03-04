@@ -107,6 +107,7 @@ export const About = ({ onNavigate }: AboutProps) => {
               <div className="prose prose-lg text-slate-600 font-light leading-relaxed">
                 <p>{t('about.missionP1')}</p>
                 <p>{t('about.missionP2')}</p>
+                <p>{t('about.missionP3')}</p>
               </div>
             </motion.div>
           </div>
@@ -255,19 +256,6 @@ export const About = ({ onNavigate }: AboutProps) => {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* MEMBERSHIP BADGE SECTION */}
-      <section className="py-16 bg-white border-t border-slate-100">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-           <div className="inline-flex items-center justify-center space-x-4 p-8 bg-slate-50 rounded-sm border border-slate-100">
-              <Award className="w-12 h-12 text-slate-700" />
-              <div className="text-left">
-                <h4 className="font-serif text-lg font-bold text-slate-900">{t('about.srfTitle')}</h4>
-                <p className="text-slate-600 text-sm">{t('about.srfDesc')}</p>
-              </div>
-           </div>
         </div>
       </section>
 
