@@ -41,7 +41,7 @@ export const Services = ({ onNavigate }: ServicesProps) => {
       icon: Briefcase,
       title: t('services.otherTitle'),
       description: t('services.otherDesc'),
-      link: "#",
+      link: null,
       image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=800",
       shortDesc: t('services.otherShort'),
     },
@@ -69,15 +69,12 @@ export const Services = ({ onNavigate }: ServicesProps) => {
           {services.map((service, index) => (
             <motion.div
               key={index}
-              onClick={(e) => {
-                e.preventDefault();
-                onNavigate(service.link);
-              }}
+              onClick={service.link ? (e) => { e.preventDefault(); onNavigate(service.link!); } : undefined}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2, duration: 0.6 }}
-              className="group relative h-[450px] overflow-hidden rounded-sm shadow-md cursor-pointer flex flex-col bg-slate-50 border border-slate-100"
+              className={`group relative h-[450px] overflow-hidden rounded-sm shadow-md flex flex-col bg-slate-50 border border-slate-100 ${service.link ? 'cursor-pointer' : 'cursor-default'}`}
             >
               {/* Image Section (Top Half) */}
               <div className="relative h-1/2 overflow-visible">
@@ -86,7 +83,7 @@ export const Services = ({ onNavigate }: ServicesProps) => {
                   alt={service.title}
                   loading="lazy"
                   decoding="async"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className={`w-full h-full object-cover ${service.link ? 'transition-transform duration-700 group-hover:scale-110' : ''}`}
                 />
 
                 {/* Icon Badge */}
@@ -105,10 +102,12 @@ export const Services = ({ onNavigate }: ServicesProps) => {
                       {service.description}
                    </p>
                  </div>
-                 <div className="flex items-center text-sm font-bold tracking-widest uppercase text-slate-700">
-                    <span className="border-b border-transparent group-hover:border-slate-700 transition-all duration-300 pb-1">{t('services.readMore')}</span>
-                    <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-2" />
-                  </div>
+                 {service.link && (
+                   <div className="flex items-center text-sm font-bold tracking-widest uppercase text-slate-700">
+                     <span className="border-b border-transparent group-hover:border-slate-700 transition-all duration-300 pb-1">{t('services.readMore')}</span>
+                     <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-2" />
+                   </div>
+                 )}
               </div>
             </motion.div>
           ))}
