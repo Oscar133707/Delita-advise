@@ -1,46 +1,49 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Users, Calculator, TrendingUp } from 'lucide-react';
-import pexelsYankrukovImage from '../Delita bilder/Nya/pexels-yankrukov-7691673.jpg';
+import { Calculator, Users, Globe, TrendingUp, ArrowRight } from 'lucide-react';
 import { useTranslation } from '../i18n';
 
 interface ServicesProps {
   onNavigate: (path: string) => void;
 }
 
+const businessAreas = [
+  {
+    icon: Calculator,
+    title: 'Redovisning & rapportering',
+    subtitle: undefined,
+    description: 'Löpande bokföring, bokslut, moms, deklaration, budget och hållbarhetsrapportering.',
+    path: '/tjanster/redovisning-rapportering',
+  },
+  {
+    icon: Users,
+    title: 'HR Human Resource',
+    subtitle: undefined,
+    description: 'Bemanning, interim, rekrytering, arbetsrätt och second opinion för din organisation.',
+    path: '/tjanster/hr-human-resource',
+  },
+  {
+    icon: Globe,
+    title: 'Internationella & specialiserade uppdrag',
+    subtitle: undefined,
+    description: 'Bolagsstrukturering för utländska ägare, stiftelser och specialiserad skatterådgivning.',
+    path: '/tjanster/internationella-uppdrag',
+  },
+  {
+    icon: TrendingUp,
+    title: 'Management',
+    subtitle: 'ägare, styrelse, ledningsgrupp',
+    description: 'Ekonomistyrning, M&A, generationsskiften, emissioner och strategisk affärsrådgivning.',
+    path: '/tjanster/management',
+  },
+];
+
 export const Services = ({ onNavigate }: ServicesProps) => {
   const { t } = useTranslation();
 
-  const services = [
-    {
-      icon: Users,
-      title: t('services.payrollTitle'),
-      description: t('services.payrollDesc'),
-      link: "/tjanster/loner-medarbetare",
-      image: pexelsYankrukovImage,
-      shortDesc: t('services.payrollShort'),
-    },
-    {
-      icon: Calculator,
-      title: t('services.accountingTitle'),
-      description: t('services.accountingDesc'),
-      link: "/tjanster/redovisning-beskattning",
-      image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=800",
-      shortDesc: t('services.accountingShort'),
-    },
-    {
-      icon: TrendingUp,
-      title: t('services.advisoryTitle'),
-      description: t('services.advisoryDesc'),
-      link: "/tjanster/radgivning",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800",
-      shortDesc: t('services.advisoryShort'),
-    },
-  ];
-
   return (
-    <section id="tjanster" className="py-24 md:py-32 bg-white">
+    <section id="affarsomraden" className="py-24 md:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -57,51 +60,43 @@ export const Services = ({ onNavigate }: ServicesProps) => {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
-          {services.map((service, index) => (
-            <motion.div
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+          {businessAreas.map((area, index) => (
+            <motion.button
               key={index}
-              onClick={service.link ? (e) => { e.preventDefault(); onNavigate(service.link!); } : undefined}
+              onClick={() => onNavigate(area.path)}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.2, duration: 0.6 }}
-              className={`group relative h-[450px] overflow-hidden rounded-sm shadow-md flex flex-col bg-slate-50 border border-slate-100 ${service.link ? 'cursor-pointer' : 'cursor-default'}`}
+              transition={{ delay: index * 0.1, duration: 0.6 }}
+              className="group bg-slate-50 border border-slate-100 rounded-sm p-8 flex flex-col gap-5 text-left hover:border-slate-300 hover:shadow-md transition-all duration-300"
             >
-              {/* Image Section (Top Half) */}
-              <div className="relative h-1/2 overflow-visible">
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  loading="lazy"
-                  decoding="async"
-                  className={`w-full h-full object-cover ${service.link ? 'transition-transform duration-700 group-hover:scale-110' : ''}`}
-                />
-
-                {/* Icon Badge */}
-                <div className="absolute bottom-0 left-8 translate-y-1/2 bg-white p-4 rounded-full shadow-lg z-10">
-                   <service.icon className="w-6 h-6 text-slate-700" />
+              {/* Header */}
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-white rounded-full shadow-sm border border-slate-100 shrink-0 group-hover:bg-delita-navy transition-colors duration-300">
+                  <area.icon className="w-5 h-5 text-slate-700" />
+                </div>
+                <div>
+                  <h3 className="font-serif text-xl md:text-2xl font-medium text-slate-900 leading-tight text-left">
+                    {area.title}
+                  </h3>
+                  {area.subtitle && (
+                    <p className="text-slate-500 text-sm mt-0.5 italic">{area.subtitle}</p>
+                  )}
                 </div>
               </div>
 
-              {/* Content Section (Bottom Half) */}
-              <div className="p-8 pt-14 flex flex-col flex-grow bg-white justify-between">
-                 <div>
-                   <h3 className="font-serif text-2xl font-medium mb-3 text-slate-900 group-hover:text-slate-700 transition-colors">
-                      {service.title}
-                   </h3>
-                   <p className="text-slate-600 text-sm leading-relaxed">
-                      {service.description}
-                   </p>
-                 </div>
-                 {service.link && (
-                   <div className="flex items-center text-sm font-bold tracking-widest uppercase text-slate-700">
-                     <span className="border-b border-transparent group-hover:border-slate-700 transition-all duration-300 pb-1">{t('services.readMore')}</span>
-                     <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-2" />
-                   </div>
-                 )}
+              {/* Description */}
+              <p className="text-slate-500 text-sm leading-relaxed">
+                {area.description}
+              </p>
+
+              {/* CTA */}
+              <div className="flex items-center gap-2 mt-auto text-sm font-medium text-slate-600 group-hover:text-slate-900 transition-colors">
+                <span>Utforska</span>
+                <ArrowRight className="w-4 h-4 -translate-x-1 group-hover:translate-x-0 opacity-60 group-hover:opacity-100 transition-all duration-200" />
               </div>
-            </motion.div>
+            </motion.button>
           ))}
         </div>
       </div>

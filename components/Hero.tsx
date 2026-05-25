@@ -32,17 +32,13 @@ export const Hero = ({ onNavigate }: HeroProps) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <span className="block text-slate-200 text-xs md:text-sm font-bold tracking-[0.25em] uppercase mb-6 drop-shadow-sm">
-            {t('hero.tagline')}
-          </span>
-
           <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-medium leading-tight mb-6 drop-shadow-lg">
             {t('hero.welcomeTo')} <br />
-            <span className="italic">Delita Advise</span>
+            Delita Advise
           </h1>
 
-          <p className="text-lg md:text-2xl text-slate-100 font-light mb-10 max-w-2xl mx-auto leading-relaxed drop-shadow-md">
-            {t('hero.subtitle')}
+          <p className="text-lg md:text-2xl text-slate-100 font-light italic mb-10 max-w-2xl mx-auto leading-relaxed drop-shadow-md">
+            {t('hero.newSubtitle')}
           </p>
 
           <motion.div

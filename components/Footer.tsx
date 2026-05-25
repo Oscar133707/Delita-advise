@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Mail, Phone, ExternalLink, Instagram, Facebook, Shield } from 'lucide-react';
+import { MapPin, Mail, ExternalLink, Instagram, Facebook, Shield } from 'lucide-react';
 import fortnoxIcon from '../Delita bilder/Logos/fortnox-icon.svg';
 import accountecLogo from '../Delita bilder/Logos/674ec2a544b7a38a39f18497_logo-cirkel-green-white.png';
 import srfLogo from '../Delita bilder/Logos/srf_bildmarke_kvadrat-1-removebg-preview.png';
@@ -51,12 +51,6 @@ export const Footer = ({ onNavigate }: FooterProps) => {
                 </a>
               </div>
 
-              <div className="flex items-start space-x-3">
-                <Phone className="w-5 h-5 text-slate-700 mt-0.5 shrink-0" />
-                <a href="tel:+46703626744" className="text-slate-600 hover:text-slate-800 transition-colors">
-                  +46(0) 70 36 26 744
-                </a>
-              </div>
             </div>
 
             {/* Social Media */}

@@ -3,7 +3,7 @@ export type Language = 'sv' | 'en';
 export const translations = {
   sv: {
     nav: {
-      services: 'Tjänster',
+      services: 'Affärsområden',
       payroll: 'Löner Medarbetare',
       accounting: 'Redovisning & Beskattning',
       advisory: 'Rådgivning',
@@ -17,9 +17,10 @@ export const translations = {
       mainMenu: 'Huvudmeny',
     },
     hero: {
-      tagline: 'Professionell Rådgivning i Malmö',
+      tagline: '',
       welcomeTo: 'Välkommen till',
-      subtitle: 'En helt digitaliserad redovisningsbyrå',
+      subtitle: '',
+      newSubtitle: 'En konsultbyrå som erbjuder helheten inom ekonomisegmentet. Med en ödmjuk attityd, levererar vi såväl spetsen som bredden.',
       cta: 'Boka ett möte',
     },
     mainContent: {
@@ -48,7 +49,7 @@ export const translations = {
     },
     services: {
       label: 'Våra Expertområden',
-      heading: 'Tjänster',
+      heading: 'Affärsområden',
       readMore: 'Läs mer',
       payrollTitle: 'Löner & Medarbetare',
       payrollDesc: 'Professionell och säker lönehantering – rätt lön, i rätt tid, varje gång.',
@@ -381,7 +382,7 @@ export const translations = {
   },
   en: {
     nav: {
-      services: 'Services',
+      services: 'Business Areas',
       payroll: 'Payroll & Employees',
       accounting: 'Accounting & Taxation',
       advisory: 'Advisory',
@@ -395,9 +396,10 @@ export const translations = {
       mainMenu: 'Main menu',
     },
     hero: {
-      tagline: 'Professional Advisory in Malmö',
+      tagline: '',
       welcomeTo: 'Welcome to',
-      subtitle: 'A fully digitalised accounting firm',
+      subtitle: '',
+      newSubtitle: 'A consultancy offering the full spectrum of financial services. With a humble attitude, we deliver both depth and breadth.',
       cta: 'Book a meeting',
     },
     mainContent: {
@@ -426,7 +428,7 @@ export const translations = {
     },
     services: {
       label: 'Our Areas of Expertise',
-      heading: 'Services',
+      heading: 'Business Areas',
       readMore: 'Read more',
       payrollTitle: 'Payroll & Employees',
       payrollDesc: 'Professional and secure payroll management that ensures your employees are paid correctly and on time.',

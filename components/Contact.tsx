@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Mail, Phone, Clock, Send, Calendar, CheckCircle, ChevronRight } from 'lucide-react';
+import { MapPin, Mail, Send, Calendar, CheckCircle, ChevronRight } from 'lucide-react';
 import { useTranslation } from '../i18n';
 
 interface ContactProps {
@@ -88,27 +88,6 @@ export const Contact = ({ onNavigate }: ContactProps) => {
                    </div>
                 </a>
 
-                {/* Phone */}
-                <a href="tel:+46703626744" className="p-8 bg-white rounded-sm border border-slate-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-6 group">
-                   <div className="p-4 bg-slate-50 rounded-full text-slate-700 group-hover:bg-delita-navy group-hover:text-slate-800 transition-colors">
-                     <Phone className="w-6 h-6" />
-                   </div>
-                   <div>
-                     <h3 className="font-serif text-lg font-medium text-slate-900 mb-2">{t('contact.phone')}</h3>
-                     <p className="text-slate-600">+46(0) 70 36 26 744</p>
-                   </div>
-                </a>
-
-                {/* Hours */}
-                <div className="p-8 bg-white rounded-sm border border-slate-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-6 group">
-                   <div className="p-4 bg-slate-50 rounded-full text-slate-700 group-hover:bg-delita-navy group-hover:text-slate-800 transition-colors">
-                     <Clock className="w-6 h-6" />
-                   </div>
-                   <div>
-                     <h3 className="font-serif text-lg font-medium text-slate-900 mb-2">{t('contact.hours')}</h3>
-                     <p className="text-slate-600">{t('contact.hoursValue')}</p>
-                   </div>
-                </div>
               </div>
 
               {/* SRF Badge */}

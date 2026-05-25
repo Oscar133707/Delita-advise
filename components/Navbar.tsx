@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Menu, X, ChevronDown, ChevronRight, Globe, User, Instagram, Facebook } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import logoImage from '../Images:Logos/delita-advise-high-resolution-logo-transparent.png';
+import logoImage from '../Images:Logos/delita-advise-new-logo.png';
 import { useTranslation } from '../i18n';
 
 interface NavbarProps {
@@ -10,12 +10,75 @@ interface NavbarProps {
   currentRoute: string;
 }
 
+const businessAreas = [
+  {
+    name: 'Redovisning & rapportering',
+    path: '/tjanster/redovisning-rapportering',
+    items: [
+      { label: 'Löpande bokföring', path: '/nyheter-kommer-snart' },
+      { label: 'Moms & skatt', path: '/nyheter-kommer-snart' },
+      { label: 'Lön & personaladministration', path: '/nyheter-kommer-snart' },
+      { label: 'Bokslut & årsredovisning', path: '/nyheter-kommer-snart' },
+      { label: 'Deklaration', path: '/nyheter-kommer-snart' },
+      { label: 'Budget & prognos', path: '/nyheter-kommer-snart' },
+      { label: 'Hållbarhetsrapportering', path: '/nyheter-kommer-snart' },
+      { label: 'Kassaflödesanalys', path: '/nyheter-kommer-snart' },
+    ],
+  },
+  {
+    name: 'HR Human Resource',
+    path: '/tjanster/hr-human-resource',
+    items: [
+      { label: 'Bemanning', path: '/nyheter-kommer-snart' },
+      { label: 'Interim', path: '/tjanster/interim' },
+      { label: 'Rekrytering', path: '/tjanster/rekrytering' },
+      { label: 'Second opinion', path: '/nyheter-kommer-snart' },
+      { label: 'Hyr-köp', path: '/nyheter-kommer-snart' },
+      { label: 'Arbetsrätt', path: '/nyheter-kommer-snart' },
+    ],
+  },
+  {
+    name: 'Internationella & specialiserade uppdrag',
+    path: '/tjanster/internationella-uppdrag',
+    items: [
+      { label: 'Bolagsstrukturering för utländska ägare', path: '/nyheter-kommer-snart' },
+      { label: 'Stiftelser, föreningar och specialbolag', path: '/nyheter-kommer-snart' },
+      { label: 'Skatterådgivning', path: '/nyheter-kommer-snart' },
+    ],
+  },
+  {
+    name: 'Management (ägare, styrelse, ledningsgrupp)',
+    path: '/tjanster/management',
+    items: [
+      { label: 'Ekonomistyrning', path: '/nyheter-kommer-snart' },
+      { label: 'Bolagsrätt & associationsrätt', path: '/nyheter-kommer-snart' },
+      { label: 'Företagsöverlåtelser / M&A', path: '/nyheter-kommer-snart' },
+      { label: 'Omstruktureringar & generationsskifte', path: '/nyheter-kommer-snart' },
+      { label: 'Emissioner', path: '/nyheter-kommer-snart' },
+      { label: 'Styrelseuppdrag', path: '/nyheter-kommer-snart' },
+      { label: 'Rådgivning, styrning & affärsstöd', path: '/nyheter-kommer-snart' },
+      { label: 'Tillväxtanalys', path: '/nyheter-kommer-snart' },
+    ],
+  },
+];
+
+const branschItems = [
+  { label: 'Musiker / Producent', path: '/nyheter-kommer-snart' },
+  { label: 'Influencer / Content creator', path: '/nyheter-kommer-snart' },
+  { label: 'Bostadsrättsföreningar', path: '/nyheter-kommer-snart' },
+  { label: 'Franchisetagare', path: '/nyheter-kommer-snart' },
+];
+
 export const Navbar = ({ onNavigate, currentRoute }: NavbarProps) => {
   const { language, toggleLanguage, t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isBranschOpen, setIsBranschOpen] = useState(false);
   const [hoverServices, setHoverServices] = useState(false);
+  const [hoverBransch, setHoverBransch] = useState(false);
+  const [hoverArea, setHoverArea] = useState<string | null>(null);
+  const [openArea, setOpenArea] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,6 +113,8 @@ export const Navbar = ({ onNavigate, currentRoute }: NavbarProps) => {
   const handleNavClick = (path: string) => {
     onNavigate(path);
     setIsMobileMenuOpen(false);
+    setOpenArea(null);
+    setIsServicesOpen(false);
   };
 
   const isActive = (path: string) => currentRoute === path;
@@ -75,11 +140,11 @@ export const Navbar = ({ onNavigate, currentRoute }: NavbarProps) => {
 
         {/* Desktop Menu - Center */}
         <div className="hidden lg:flex items-center space-x-8 flex-1 justify-center">
-          {/* Services Dropdown */}
+          {/* Affärsområden Dropdown */}
           <div
             className="relative"
             onMouseEnter={() => setHoverServices(true)}
-            onMouseLeave={() => setHoverServices(false)}
+            onMouseLeave={() => { setHoverServices(false); setHoverArea(null); }}
           >
             <button
               className={`flex items-center text-sm font-medium transition-colors tracking-wide ${
@@ -98,49 +163,91 @@ export const Navbar = ({ onNavigate, currentRoute }: NavbarProps) => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 10 }}
                   transition={{ duration: 0.2 }}
+                  className="absolute top-full left-1/2 -translate-x-1/2 w-80 pt-4"
+                >
+                  <div className="bg-white rounded-lg shadow-xl border border-slate-100 py-2">
+                    {businessAreas.map((area) => (
+                      <div
+                        key={area.name}
+                        className="relative"
+                        onMouseEnter={() => setHoverArea(area.name)}
+                        onMouseLeave={() => setHoverArea(null)}
+                      >
+                        <button
+                          onClick={() => { handleNavClick(area.path); setHoverServices(false); setHoverArea(null); }}
+                          className="flex items-center justify-between w-full px-6 py-3 text-sm text-slate-600 hover:bg-slate-50 hover:text-slate-700 transition-colors"
+                        >
+                          <span className="text-left">{area.name}</span>
+                          <ChevronRight className="w-3 h-3 ml-2 flex-shrink-0" />
+                        </button>
+
+                        <AnimatePresence>
+                          {hoverArea === area.name && (
+                            <motion.div
+                              initial={{ opacity: 0, x: -6 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              exit={{ opacity: 0, x: -6 }}
+                              transition={{ duration: 0.15 }}
+                              className="absolute left-full top-0 w-72 bg-white rounded-lg shadow-xl border border-slate-100 py-2"
+                            >
+                              {area.items.map((item) => (
+                                <button
+                                  key={item.label}
+                                  onClick={() => {
+                                    handleNavClick(item.path);
+                                    setHoverServices(false);
+                                    setHoverArea(null);
+                                  }}
+                                  className="block w-full text-left px-6 py-2.5 text-sm text-slate-600 hover:bg-slate-50 hover:text-slate-700 transition-colors"
+                                >
+                                  {item.label}
+                                </button>
+                              ))}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* Branschspecifik Dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setHoverBransch(true)}
+            onMouseLeave={() => setHoverBransch(false)}
+          >
+            <button
+              className={`flex items-center text-sm font-medium transition-colors tracking-wide text-slate-600 hover:text-slate-700`}
+              onClick={(e) => e.preventDefault()}
+            >
+              Branschspecifik
+              <ChevronDown className={`w-4 h-4 ml-1 transition-transform duration-200 ${hoverBransch ? 'rotate-180' : ''}`} />
+            </button>
+
+            <AnimatePresence>
+              {hoverBransch && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  transition={{ duration: 0.2 }}
                   className="absolute top-full left-1/2 -translate-x-1/2 w-64 pt-4"
                 >
-                   <div className="bg-white rounded-lg shadow-xl border border-slate-100 overflow-hidden py-2">
+                  <div className="bg-white rounded-lg shadow-xl border border-slate-100 py-2">
+                    {branschItems.map((item) => (
                       <button
-                        onClick={() => {
-                            handleNavClick('/tjanster/loner-medarbetare');
-                            setHoverServices(false);
-                        }}
-                        className={`block w-full text-left px-6 py-3 text-sm transition-colors ${
-                          isActive('/tjanster/loner-medarbetare')
-                            ? 'bg-slate-50 text-slate-700 font-medium'
-                            : 'text-slate-600 hover:bg-slate-50 hover:text-slate-700'
-                        }`}
+                        key={item.label}
+                        onClick={() => { handleNavClick(item.path); setHoverBransch(false); }}
+                        className="block w-full text-left px-6 py-3 text-sm text-slate-600 hover:bg-slate-50 hover:text-slate-700 transition-colors"
                       >
-                        {t('nav.payroll')}
+                        {item.label}
                       </button>
-                      <button
-                        onClick={() => {
-                            handleNavClick('/tjanster/redovisning-beskattning');
-                            setHoverServices(false);
-                        }}
-                        className={`block w-full text-left px-6 py-3 text-sm transition-colors ${
-                          isActive('/tjanster/redovisning-beskattning')
-                            ? 'bg-slate-50 text-slate-700 font-medium'
-                            : 'text-slate-600 hover:bg-slate-50 hover:text-slate-700'
-                        }`}
-                      >
-                        {t('nav.accounting')}
-                      </button>
-                      <button
-                        onClick={() => {
-                            handleNavClick('/tjanster/radgivning');
-                            setHoverServices(false);
-                        }}
-                        className={`block w-full text-left px-6 py-3 text-sm transition-colors ${
-                          isActive('/tjanster/radgivning')
-                            ? 'bg-slate-50 text-slate-700 font-medium'
-                            : 'text-slate-600 hover:bg-slate-50 hover:text-slate-700'
-                        }`}
-                      >
-                        {t('nav.advisory')}
-                      </button>
-                   </div>
+                    ))}
+                  </div>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -229,7 +336,7 @@ export const Navbar = ({ onNavigate, currentRoute }: NavbarProps) => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 40 }}
               transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className="delita-mobile-menu lg:hidden fixed inset-0 w-screen h-screen z-[1000] flex flex-col bg-white"
+              className="delita-mobile-menu lg:hidden fixed inset-0 w-screen h-screen z-[1000] flex flex-col bg-white overflow-y-auto"
             >
               {/* Header: Logo + close (X) pinned to top */}
               <header className="relative flex-shrink-0 w-full px-6 pt-6 pb-4 flex items-center justify-between">
@@ -252,9 +359,9 @@ export const Navbar = ({ onNavigate, currentRoute }: NavbarProps) => {
                 </button>
               </header>
 
-              {/* Centered navigation */}
+              {/* Navigation */}
               <nav
-                className="flex-1 flex flex-col items-center justify-center px-8 space-y-8"
+                className="flex-1 flex flex-col items-center justify-center px-8 py-8 space-y-8"
                 aria-label={t('nav.mainMenu')}
               >
                 {/* Hem */}
@@ -267,8 +374,8 @@ export const Navbar = ({ onNavigate, currentRoute }: NavbarProps) => {
                   {t('nav.home')}
                 </button>
 
-                {/* Tjänster with expandable submenu */}
-                <div className="flex flex-col items-center space-y-4">
+                {/* Affärsområden with expandable accordion */}
+                <div className="flex flex-col items-center w-full space-y-4">
                   <button
                     onClick={() => setIsServicesOpen((open) => !open)}
                     className={`flex items-center gap-2 font-serif text-2xl tracking-wide text-slate-900 touch-manipulation ${
@@ -290,38 +397,88 @@ export const Navbar = ({ onNavigate, currentRoute }: NavbarProps) => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -8 }}
                         transition={{ duration: 0.2 }}
+                        className="flex flex-col items-center w-full space-y-4"
+                      >
+                        {businessAreas.map((area) => (
+                          <div key={area.name} className="flex flex-col items-center w-full space-y-2">
+                            <div className="flex items-center gap-1">
+                              <button
+                                onClick={() => handleNavClick(area.path)}
+                                className="font-serif text-lg text-slate-800 touch-manipulation font-normal"
+                              >
+                                {area.name}
+                              </button>
+                              <button
+                                onClick={() => setOpenArea(openArea === area.name ? null : area.name)}
+                                className="p-1 touch-manipulation"
+                                aria-label="Visa undersidor"
+                              >
+                                <ChevronDown
+                                  className={`w-4 h-4 text-slate-500 transition-transform duration-200 ${
+                                    openArea === area.name ? 'rotate-180' : ''
+                                  }`}
+                                />
+                              </button>
+                            </div>
+
+                            <AnimatePresence initial={false}>
+                              {openArea === area.name && (
+                                <motion.div
+                                  initial={{ opacity: 0, y: -6 }}
+                                  animate={{ opacity: 1, y: 0 }}
+                                  exit={{ opacity: 0, y: -6 }}
+                                  transition={{ duration: 0.2 }}
+                                  className="flex flex-col items-center space-y-2 pb-2"
+                                >
+                                  {area.items.map((item) => (
+                                    <button
+                                      key={item.label}
+                                      onClick={() => handleNavClick(item.path)}
+                                      className="text-sm text-slate-500 touch-manipulation hover:text-slate-700 transition-colors"
+                                    >
+                                      {item.label}
+                                    </button>
+                                  ))}
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          </div>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Branschspecifik mobile accordion */}
+                <div className="flex flex-col items-center w-full space-y-4">
+                  <button
+                    onClick={() => setIsBranschOpen((open) => !open)}
+                    className="flex items-center gap-2 font-serif text-2xl tracking-wide text-slate-900 touch-manipulation font-normal"
+                  >
+                    <span>Branschspecifik</span>
+                    <ChevronDown
+                      className={`w-5 h-5 transition-transform duration-200 ${isBranschOpen ? 'rotate-180' : ''}`}
+                    />
+                  </button>
+
+                  <AnimatePresence initial={false}>
+                    {isBranschOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -8 }}
+                        transition={{ duration: 0.2 }}
                         className="flex flex-col items-center space-y-3"
                       >
-                        <button
-                          onClick={() => handleNavClick('/tjanster/loner-medarbetare')}
-                          className={`font-serif text-lg text-slate-800 touch-manipulation ${
-                            isActive('/tjanster/loner-medarbetare')
-                              ? 'font-semibold underline underline-offset-4'
-                              : 'font-normal'
-                          }`}
-                        >
-                          {t('nav.payroll')}
-                        </button>
-                        <button
-                          onClick={() => handleNavClick('/tjanster/redovisning-beskattning')}
-                          className={`font-serif text-lg text-slate-800 touch-manipulation ${
-                            isActive('/tjanster/redovisning-beskattning')
-                              ? 'font-semibold underline underline-offset-4'
-                              : 'font-normal'
-                          }`}
-                        >
-                          {t('nav.accounting')}
-                        </button>
-                        <button
-                          onClick={() => handleNavClick('/tjanster/radgivning')}
-                          className={`font-serif text-lg text-slate-800 touch-manipulation ${
-                            isActive('/tjanster/radgivning')
-                              ? 'font-semibold underline underline-offset-4'
-                              : 'font-normal'
-                          }`}
-                        >
-                          {t('nav.advisory')}
-                        </button>
+                        {branschItems.map((item) => (
+                          <button
+                            key={item.label}
+                            onClick={() => handleNavClick(item.path)}
+                            className="font-serif text-lg text-slate-800 touch-manipulation font-normal"
+                          >
+                            {item.label}
+                          </button>
+                        ))}
                       </motion.div>
                     )}
                   </AnimatePresence>
