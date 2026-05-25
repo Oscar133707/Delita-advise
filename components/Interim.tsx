@@ -160,7 +160,7 @@ export const Interim = ({ onNavigate }: InterimProps) => {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-[#E6DED1]">
+      <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="font-serif text-3xl md:text-4xl text-slate-900 mb-4">
             Vill du veta mer?
