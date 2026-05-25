@@ -3,6 +3,7 @@ import { MapPin, Mail, ExternalLink, Instagram, Facebook, Shield } from 'lucide-
 import fortnoxIcon from '../Delita bilder/Logos/fortnox-icon.svg';
 import accountecLogo from '../Delita bilder/Logos/674ec2a544b7a38a39f18497_logo-cirkel-green-white.png';
 import srfLogo from '../Delita bilder/Logos/srf_bildmarke_kvadrat-1-removebg-preview.png';
+import delitaLogo from '../Images:Logos/delita-advise-new-logo.png';
 import { useTranslation } from '../i18n';
 
 interface FooterProps {
@@ -29,10 +30,11 @@ export const Footer = ({ onNavigate }: FooterProps) => {
           {/* Column 1 - Company Info & Socials */}
           <div className="space-y-8">
             <div>
-              <h3 className="font-serif text-2xl font-bold tracking-tight mb-2">DELITA ADVISE</h3>
-              <p className="text-slate-600 font-light text-sm tracking-wide uppercase">
-                {t('footer.tagline')}
-              </p>
+              <img
+                src={delitaLogo}
+                alt="Delita Advise"
+                className="h-14 w-auto object-contain object-left"
+              />
             </div>
 
             <div className="space-y-4">
