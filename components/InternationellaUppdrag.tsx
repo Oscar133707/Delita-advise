@@ -2,18 +2,21 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Clock } from 'lucide-react';
 import heroImage from '../Delita bilder/Nya/linkedin-sales-solutions-1A8yP_5msac-unsplash.jpg';
+import { useTranslation } from '../i18n';
 
 interface Props {
   onNavigate: (path: string) => void;
 }
 
-const services = [
-  { label: 'Bolagsstrukturering för utländska ägare', path: '/nyheter-kommer-snart', active: false },
-  { label: 'Stiftelser, föreningar och specialbolag', path: '/nyheter-kommer-snart', active: false },
-  { label: 'Skatterådgivning', path: '/nyheter-kommer-snart', active: false },
-];
-
 export const InternationellaUppdrag = ({ onNavigate }: Props) => {
+  const { t } = useTranslation();
+
+  const services = [
+    { labelKey: 'nav.ba3i1', path: '/nyheter-kommer-snart', active: false },
+    { labelKey: 'nav.ba3i2', path: '/nyheter-kommer-snart', active: false },
+    { labelKey: 'nav.ba3i3', path: '/nyheter-kommer-snart', active: false },
+  ];
+
   return (
     <div className="pt-0 min-h-screen bg-white font-sans">
 
@@ -22,7 +25,7 @@ export const InternationellaUppdrag = ({ onNavigate }: Props) => {
         <div className="absolute inset-0">
           <img
             src={heroImage}
-            alt="Internationella & specialiserade uppdrag"
+            alt={t('internationella.imgAlt')}
             loading="eager"
             decoding="async"
             className="w-full h-full object-cover"
@@ -36,7 +39,7 @@ export const InternationellaUppdrag = ({ onNavigate }: Props) => {
             transition={{ duration: 0.8 }}
             className="font-serif text-4xl md:text-6xl font-medium mb-6"
           >
-            Internationella & specialiserade uppdrag
+            {t('internationella.heading')}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -44,7 +47,7 @@ export const InternationellaUppdrag = ({ onNavigate }: Props) => {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="text-lg md:text-2xl text-slate-200 font-light"
           >
-            Specialiserad rådgivning för komplexa affärer – oavsett var i världen
+            {t('internationella.tagline')}
           </motion.p>
         </div>
       </section>
@@ -59,9 +62,7 @@ export const InternationellaUppdrag = ({ onNavigate }: Props) => {
             transition={{ duration: 0.8 }}
             className="text-lg text-slate-600 leading-relaxed"
           >
-            Vi hanterar komplexa och gränsöverskridande uppdrag med hög precision – från
-            bolagsstrukturering för utländska ägare till specialiserad skatterådgivning för
-            stiftelser och föreningar. Vi navigerar regelverket så att du kan fokusera på affärerna.
+            {t('internationella.intro')}
           </motion.p>
         </div>
       </section>
@@ -72,7 +73,7 @@ export const InternationellaUppdrag = ({ onNavigate }: Props) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {services.map((service, i) => (
               <motion.button
-                key={service.label}
+                key={service.labelKey}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -80,10 +81,10 @@ export const InternationellaUppdrag = ({ onNavigate }: Props) => {
                 onClick={() => onNavigate(service.path)}
                 className="group flex items-center justify-between bg-white rounded-xl px-6 py-5 shadow-sm border border-slate-100 hover:shadow-md hover:border-slate-200 transition-all text-left"
               >
-                <span className="text-slate-700 font-medium text-sm">{service.label}</span>
+                <span className="text-slate-700 font-medium text-sm">{t(service.labelKey)}</span>
                 <span className="flex items-center gap-1.5 text-xs text-slate-400 ml-4 shrink-0">
                   <Clock className="w-3.5 h-3.5" />
-                  Nyheter kommer snart
+                  {t('shared.comingSoon')}
                 </span>
               </motion.button>
             ))}
@@ -101,7 +102,7 @@ export const InternationellaUppdrag = ({ onNavigate }: Props) => {
             transition={{ duration: 0.8 }}
             className="font-serif text-3xl md:text-4xl text-slate-900 mb-6"
           >
-            Vill du veta mer?
+            {t('shared.wantToKnowMore')}
           </motion.h2>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -114,13 +115,13 @@ export const InternationellaUppdrag = ({ onNavigate }: Props) => {
               onClick={() => onNavigate('/boka-mote')}
               className="px-8 py-3.5 bg-delita-navy text-slate-800 font-medium rounded-full hover:bg-[#D6CFC3] transition-colors"
             >
-              Boka ett möte
+              {t('shared.bookMeeting')}
             </button>
             <button
               onClick={() => onNavigate('/kontakt')}
               className="flex items-center justify-center gap-2 px-8 py-3.5 border border-slate-300 text-slate-700 font-medium rounded-full hover:bg-slate-50 transition-colors"
             >
-              Kontakta oss <ArrowRight className="w-4 h-4" />
+              {t('shared.contactUs')} <ArrowRight className="w-4 h-4" />
             </button>
           </motion.div>
         </div>

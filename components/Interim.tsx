@@ -1,39 +1,30 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, CheckCircle, Users, Zap, Shield, ArrowRight } from 'lucide-react';
+import { useTranslation } from '../i18n';
 
 interface InterimProps {
   onNavigate: (path: string) => void;
 }
 
-const roles = [
-  'Controller (Business, Group, Financial)',
-  'Ekonomichef (CFO – Chief Finance Officer)',
-  'Koncernredovisningschef',
-  'Lönechef',
-  'Redovisningschef (Head of Accounting)',
-  'Senior rådgivare (Senior Advisor)',
-];
-
-const highlights = [
-  {
-    icon: Zap,
-    title: 'Snabb leverans',
-    desc: 'Med effektiva processer och moderna verktyg kan vi leverera en interimskonsult snabbt.',
-  },
-  {
-    icon: Shield,
-    title: 'Kvalitetssäkrad process',
-    desc: 'Strukturerad urvalsmetod med djupintervjuer och noggrant utvalda tester för kompetens och prestation.',
-  },
-  {
-    icon: Users,
-    title: 'Fullt mandat',
-    desc: 'Våra interimskonsulter kliver in med fullt mandat för att stabilisera verksamheten utan startsträcka.',
-  },
-];
-
 export const Interim = ({ onNavigate }: InterimProps) => {
+  const { t } = useTranslation();
+
+  const roles = [
+    t('interim.role1'),
+    t('interim.role2'),
+    t('interim.role3'),
+    t('interim.role4'),
+    t('interim.role5'),
+    t('interim.role6'),
+  ];
+
+  const highlights = [
+    { icon: Zap, title: t('interim.highlight1title'), desc: t('interim.highlight1desc') },
+    { icon: Shield, title: t('interim.highlight2title'), desc: t('interim.highlight2desc') },
+    { icon: Users, title: t('interim.highlight3title'), desc: t('interim.highlight3desc') },
+  ];
+
   return (
     <div className="pt-24 min-h-screen bg-white">
       {/* Header */}
@@ -46,7 +37,7 @@ export const Interim = ({ onNavigate }: InterimProps) => {
             className="flex items-center gap-2 text-slate-500 hover:text-slate-800 text-sm font-medium mb-8 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            Tillbaka
+            {t('shared.back')}
           </motion.button>
 
           <motion.div
@@ -55,13 +46,13 @@ export const Interim = ({ onNavigate }: InterimProps) => {
             transition={{ duration: 0.6 }}
           >
             <span className="text-slate-500 text-xs font-bold tracking-[0.2em] uppercase mb-4 block">
-              HR Human Resource
+              {t('interim.parentLabel')}
             </span>
             <h1 className="font-serif text-4xl md:text-6xl text-slate-900 mb-6">
-              Interim
+              {t('interim.heading')}
             </h1>
             <p className="text-slate-600 text-lg md:text-xl font-light leading-relaxed max-w-2xl">
-              Kvalificerade interimschefer och specialister inom hela ekonomisegmentet.
+              {t('interim.tagline')}
             </p>
           </motion.div>
         </div>
@@ -78,10 +69,10 @@ export const Interim = ({ onNavigate }: InterimProps) => {
               transition={{ duration: 0.6 }}
             >
               <p className="text-slate-600 leading-relaxed text-lg font-light mb-6">
-                Med fokus på ekonomisegmentet attraherar vi de bästa profilerna – vi når både interimschefer och seniora specialister.
+                {t('interim.introP1')}
               </p>
               <p className="text-slate-600 leading-relaxed font-light">
-                Vi är tryggheten mellan kunder i behov av att effektivt tillsätta affärskritiska positioner och skickliga interimskonsulter. Då vi är nischade inom hela ekonomisegmentet, genom vårt proaktiva arbete, vår systematiska process och vårt tydliga fokus är vi den givna samarbetspartnern när kunden har bråttom och det måste bli rätt.
+                {t('interim.introP2')}
               </p>
             </motion.div>
 
@@ -92,7 +83,7 @@ export const Interim = ({ onNavigate }: InterimProps) => {
               transition={{ duration: 0.6, delay: 0.15 }}
               className="bg-slate-50 border border-slate-100 rounded-sm p-8"
             >
-              <h3 className="font-serif text-xl text-slate-900 mb-6">Exempel på befattningar</h3>
+              <h3 className="font-serif text-xl text-slate-900 mb-6">{t('interim.rolesHeading')}</h3>
               <ul className="space-y-3">
                 {roles.map((role, i) => (
                   <li key={i} className="flex items-start gap-3">
@@ -140,20 +131,12 @@ export const Interim = ({ onNavigate }: InterimProps) => {
             transition={{ duration: 0.6 }}
             className="max-w-3xl"
           >
-            <h2 className="font-serif text-3xl md:text-4xl text-slate-900 mb-8">Vår process</h2>
+            <h2 className="font-serif text-3xl md:text-4xl text-slate-900 mb-8">{t('interim.processHeading')}</h2>
             <div className="space-y-6 text-slate-600 font-light leading-relaxed">
-              <p>
-                Genom en strukturerad urvalsmetod går vi från en bred kartläggning till målinriktade djupintervjuer. Vi kvalitetssäkrar löpande våra konsulter genom noggrant utvalda tester för att säkerställa kompetens och prestation. Resultatet är en kvalitetssäkrad och snabb leverans som ofta överraskar kunder positivt.
-              </p>
-              <p>
-                När en affärskritisk specialistroll är vakant får det i regel stora negativa konsekvenser för organisationen. Dessa personer är ofta svåra för företagen att själva identifiera då de är eftertraktade på arbetsmarknaden och sällan aktivt söker nya uppdrag. Vår kvalitetsprocess innebär bland annat att vi löpande identifierar och kommunicerar med dessa individer, utvärderar deras kompetens samt håller koll på tillgänglighet och preferenser.
-              </p>
-              <p>
-                Kärnan i våra processer är en djupgående förståelse för verksamheten – från organisation, team och kultur till produkter, kunder och leverantörer. Denna helhetsbild är avgörande för att kunna göra en träffsäker och hållbar matchning.
-              </p>
-              <p className="font-medium text-slate-700">
-                Ingen kostnad för er såtillvida vi inte tillsätter tjänsten hos er.
-              </p>
+              <p>{t('interim.processP1')}</p>
+              <p>{t('interim.processP2')}</p>
+              <p>{t('interim.processP3')}</p>
+              <p className="font-medium text-slate-700">{t('interim.processNote')}</p>
             </div>
           </motion.div>
         </div>
@@ -163,10 +146,10 @@ export const Interim = ({ onNavigate }: InterimProps) => {
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="font-serif text-3xl md:text-4xl text-slate-900 mb-4">
-            Vill du veta mer?
+            {t('interim.ctaHeading')}
           </h2>
           <p className="text-slate-700 mb-8 font-light">
-            Tveka inte att höra av dig till{' '}
+            {t('interim.ctaText')}{' '}
             <a href="mailto:tm@delita.se" className="font-medium underline hover:text-slate-900 transition-colors">
               tm@delita.se
             </a>
@@ -175,7 +158,7 @@ export const Interim = ({ onNavigate }: InterimProps) => {
             onClick={() => onNavigate('/boka-mote')}
             className="inline-flex items-center gap-2 px-8 py-3.5 bg-slate-900 text-white font-medium rounded-full hover:bg-slate-700 transition-colors duration-300"
           >
-            Boka möte
+            {t('shared.bookMeeting')}
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>

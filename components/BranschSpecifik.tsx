@@ -1,19 +1,22 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronRight, Music, Star, Building2, Store } from 'lucide-react';
+import { useTranslation } from '../i18n';
 
 interface BranschSpecifikProps {
   onNavigate: (path: string) => void;
 }
 
-const industries = [
-  { icon: Music,     title: 'Musiker / Producent' },
-  { icon: Star,      title: 'Influencer / Content creator' },
-  { icon: Building2, title: 'Bostadsrättsföreningar' },
-  { icon: Store,     title: 'Franchisetagare' },
-];
-
 export const BranschSpecifik = ({ onNavigate }: BranschSpecifikProps) => {
+  const { t } = useTranslation();
+
+  const industries = [
+    { icon: Music,     titleKey: 'nav.br1' },
+    { icon: Star,      titleKey: 'nav.br2' },
+    { icon: Building2, titleKey: 'nav.br3' },
+    { icon: Store,     titleKey: 'nav.br4' },
+  ];
+
   return (
     <section className="py-24 md:py-32 bg-slate-50">
       <div className="max-w-7xl mx-auto px-6">
@@ -25,10 +28,10 @@ export const BranschSpecifik = ({ onNavigate }: BranschSpecifikProps) => {
           className="mb-16 text-center"
         >
           <span className="text-slate-600 text-xs font-bold tracking-[0.2em] uppercase mb-4 block">
-            Specialisering
+            {t('shared.specialization')}
           </span>
           <h2 className="font-serif text-4xl md:text-6xl text-slate-900">
-            Branschspecifik
+            {t('nav.branschLabel')}
           </h2>
         </motion.div>
 
@@ -48,12 +51,12 @@ export const BranschSpecifik = ({ onNavigate }: BranschSpecifikProps) => {
               </div>
 
               <h3 className="font-serif text-lg font-medium text-slate-900 leading-snug">
-                {industry.title}
+                {t(industry.titleKey)}
               </h3>
 
               <div className="flex items-center gap-1.5 mt-auto">
                 <span className="text-xs text-slate-400 font-medium tracking-wide">
-                  Nyheter kommer snart
+                  {t('shared.comingSoon')}
                 </span>
                 <ChevronRight className="w-3.5 h-3.5 text-slate-400 opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all duration-200" />
               </div>

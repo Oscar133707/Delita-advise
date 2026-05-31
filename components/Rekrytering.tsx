@@ -1,46 +1,37 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, CheckCircle, Target, Users, Star, ArrowRight } from 'lucide-react';
+import { useTranslation } from '../i18n';
 
 interface RekryteringProps {
   onNavigate: (path: string) => void;
 }
 
-const roles = [
-  'Controller',
-  'Ekonomiassistent',
-  'Ekonomichef (CFO – Chief Finance Officer)',
-  'Koncernredovisningschef',
-  'Konsult / Rådgivare',
-  'Lagerekonom',
-  'Löneadministratör',
-  'Lönechef',
-  'Redovisningschef (Head of Accounting)',
-  'Redovisningsekonom (Accounting Specialist)',
-  'Revisor',
-  'Revisorsassistent',
-  'Skatteexpert',
-];
-
-const highlights = [
-  {
-    icon: Target,
-    title: 'Specialiserad expertis',
-    desc: 'Våra dedikerade rekryteringskonsulter är specialiserade på roller inom ekonomi och finans.',
-  },
-  {
-    icon: Users,
-    title: 'Stort nätverk',
-    desc: 'Med ett brett nätverk av ekonomer hjälper vi er att hitta rätt person för era behov.',
-  },
-  {
-    icon: Star,
-    title: 'Kvalitetssäkrad matchning',
-    desc: 'Vi säkerställer samtliga kandidaters kompetens genom specifikt anpassade ekonomitester.',
-  },
-];
-
 export const Rekrytering = ({ onNavigate }: RekryteringProps) => {
+  const { t } = useTranslation();
+
+  const roles = [
+    t('rekrytering.role1'),
+    t('rekrytering.role2'),
+    t('rekrytering.role3'),
+    t('rekrytering.role4'),
+    t('rekrytering.role5'),
+    t('rekrytering.role6'),
+    t('rekrytering.role7'),
+    t('rekrytering.role8'),
+    t('rekrytering.role9'),
+    t('rekrytering.role10'),
+    t('rekrytering.role11'),
+    t('rekrytering.role12'),
+    t('rekrytering.role13'),
+  ];
+
+  const highlights = [
+    { icon: Target, title: t('rekrytering.highlight1title'), desc: t('rekrytering.highlight1desc') },
+    { icon: Users, title: t('rekrytering.highlight2title'), desc: t('rekrytering.highlight2desc') },
+    { icon: Star, title: t('rekrytering.highlight3title'), desc: t('rekrytering.highlight3desc') },
+  ];
+
   return (
     <div className="pt-24 min-h-screen bg-white">
       {/* Header */}
@@ -53,7 +44,7 @@ export const Rekrytering = ({ onNavigate }: RekryteringProps) => {
             className="flex items-center gap-2 text-slate-500 hover:text-slate-800 text-sm font-medium mb-8 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            Tillbaka
+            {t('shared.back')}
           </motion.button>
 
           <motion.div
@@ -62,13 +53,13 @@ export const Rekrytering = ({ onNavigate }: RekryteringProps) => {
             transition={{ duration: 0.6 }}
           >
             <span className="text-slate-500 text-xs font-bold tracking-[0.2em] uppercase mb-4 block">
-              HR Human Resource
+              {t('rekrytering.parentLabel')}
             </span>
             <h1 className="font-serif text-4xl md:text-6xl text-slate-900 mb-6">
-              Rekrytering
+              {t('rekrytering.heading')}
             </h1>
             <p className="text-slate-600 text-lg md:text-xl font-light leading-relaxed max-w-2xl">
-              Kvalificerade medarbetare inom hela ekonomisegmentet.
+              {t('rekrytering.tagline')}
             </p>
           </motion.div>
         </div>
@@ -85,13 +76,13 @@ export const Rekrytering = ({ onNavigate }: RekryteringProps) => {
               transition={{ duration: 0.6 }}
             >
               <p className="text-slate-600 leading-relaxed text-lg font-light mb-6">
-                Med specialisering inom redovisning, ekonomistyrning och finans matchar vi rätt ekonom till er verksamhet – det är vår expertis.
+                {t('rekrytering.introP1')}
               </p>
               <p className="text-slate-600 leading-relaxed font-light mb-6">
-                Ni får konsultativt stöd genom hela processen, det ni behöver för att hitta er nästa ekonomiresurs. Med den bakgrund våra specialiserade medarbetare har kan de snabbt skapa sig en förståelse för rollen och era krav, för att matcha rätt ekonom till er.
+                {t('rekrytering.introP2')}
               </p>
               <p className="text-slate-600 leading-relaxed font-light">
-                För oss är det viktigt att förstå helheten för både människan och kompetensen. Vi har lika stort fokus på att matcha människa med företagskultur som att verifiera arbets- och utbildningskompetens.
+                {t('rekrytering.introP3')}
               </p>
             </motion.div>
 
@@ -102,7 +93,7 @@ export const Rekrytering = ({ onNavigate }: RekryteringProps) => {
               transition={{ duration: 0.6, delay: 0.15 }}
               className="bg-slate-50 border border-slate-100 rounded-sm p-8"
             >
-              <h3 className="font-serif text-xl text-slate-900 mb-6">Vanliga roller vi arbetar med</h3>
+              <h3 className="font-serif text-xl text-slate-900 mb-6">{t('rekrytering.rolesHeading')}</h3>
               <ul className="space-y-3">
                 {roles.map((role, i) => (
                   <li key={i} className="flex items-start gap-3">
@@ -150,14 +141,10 @@ export const Rekrytering = ({ onNavigate }: RekryteringProps) => {
             transition={{ duration: 0.6 }}
             className="max-w-3xl"
           >
-            <h2 className="font-serif text-3xl md:text-4xl text-slate-900 mb-8">Vår process</h2>
+            <h2 className="font-serif text-3xl md:text-4xl text-slate-900 mb-8">{t('rekrytering.processHeading')}</h2>
             <div className="space-y-6 text-slate-600 font-light leading-relaxed">
-              <p>
-                Kärnan i våra processer är en djupgående förståelse för verksamheten – från organisation, team och kultur till produkter, kunder och leverantörer. Denna helhetsbild är avgörande för att kunna göra en träffsäker och hållbar matchning.
-              </p>
-              <p>
-                Vi ser det som en självklarhet att investera den tid som krävs för att verkligen förstå ert önskemål, och träffas därför hellre en gång för mycket än en gång för lite. Ett väl genomfört förarbete är en avgörande framgångsfaktor för ett lyckat resultat.
-              </p>
+              <p>{t('rekrytering.processP1')}</p>
+              <p>{t('rekrytering.processP2')}</p>
             </div>
           </motion.div>
         </div>
@@ -167,10 +154,10 @@ export const Rekrytering = ({ onNavigate }: RekryteringProps) => {
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="font-serif text-3xl md:text-4xl text-slate-900 mb-4">
-            Vill du veta mer?
+            {t('rekrytering.ctaHeading')}
           </h2>
           <p className="text-slate-700 mb-8 font-light">
-            Tveka inte att höra av dig till{' '}
+            {t('rekrytering.ctaText')}{' '}
             <a href="mailto:tm@delita.se" className="font-medium underline hover:text-slate-900 transition-colors">
               tm@delita.se
             </a>
@@ -179,7 +166,7 @@ export const Rekrytering = ({ onNavigate }: RekryteringProps) => {
             onClick={() => onNavigate('/boka-mote')}
             className="inline-flex items-center gap-2 px-8 py-3.5 bg-slate-900 text-white font-medium rounded-full hover:bg-slate-700 transition-colors duration-300"
           >
-            Boka möte
+            {t('shared.bookMeeting')}
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>

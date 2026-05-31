@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Shield, ExternalLink, Mail, ArrowLeft } from 'lucide-react';
+import delitaOriginalLogo from '../Images:Logos/delita-advise-new-logo.png';
 import fortnoxIcon from '../Delita bilder/Logos/fortnox-icon.svg';
 import accountecLogo from '../Delita bilder/Logos/674ec2a544b7a38a39f18497_logo-cirkel-green-white.png';
 import { useTranslation } from '../i18n';
@@ -34,10 +35,25 @@ export const Login = ({ onNavigate }: LoginProps) => {
 
       <main className="flex-grow flex flex-col items-center justify-center py-20 px-6">
 
+        {/* Brand Logo */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-12"
+        >
+          <img
+            src={delitaOriginalLogo}
+            alt="Delita Advise"
+            className="h-20 md:h-24 w-auto mx-auto"
+          />
+        </motion.div>
+
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
           className="text-center max-w-2xl mx-auto mb-16"
         >
           <span className="inline-block px-4 py-1.5 rounded-full bg-delita-navy text-slate-800 text-xs font-bold tracking-widest uppercase mb-6">

@@ -8,39 +8,39 @@ interface ServicesProps {
   onNavigate: (path: string) => void;
 }
 
-const businessAreas = [
-  {
-    icon: Calculator,
-    title: 'Redovisning & rapportering',
-    subtitle: undefined,
-    description: 'Löpande bokföring, bokslut, moms, deklaration, budget och hållbarhetsrapportering.',
-    path: '/tjanster/redovisning-rapportering',
-  },
-  {
-    icon: Users,
-    title: 'HR Human Resource',
-    subtitle: undefined,
-    description: 'Bemanning, interim, rekrytering, arbetsrätt och second opinion för din organisation.',
-    path: '/tjanster/hr-human-resource',
-  },
-  {
-    icon: Globe,
-    title: 'Internationella & specialiserade uppdrag',
-    subtitle: undefined,
-    description: 'Bolagsstrukturering för utländska ägare, stiftelser och specialiserad skatterådgivning.',
-    path: '/tjanster/internationella-uppdrag',
-  },
-  {
-    icon: TrendingUp,
-    title: 'Management',
-    subtitle: 'ägare, styrelse, ledningsgrupp',
-    description: 'Ekonomistyrning, M&A, generationsskiften, emissioner och strategisk affärsrådgivning.',
-    path: '/tjanster/management',
-  },
-];
-
 export const Services = ({ onNavigate }: ServicesProps) => {
   const { t } = useTranslation();
+
+  const businessAreas = [
+    {
+      icon: Calculator,
+      title: t('services.area1title'),
+      subtitle: undefined,
+      description: t('services.area1desc'),
+      path: '/tjanster/redovisning-rapportering',
+    },
+    {
+      icon: Users,
+      title: t('services.area2title'),
+      subtitle: undefined,
+      description: t('services.area2desc'),
+      path: '/tjanster/hr-human-resource',
+    },
+    {
+      icon: Globe,
+      title: t('services.area3title'),
+      subtitle: undefined,
+      description: t('services.area3desc'),
+      path: '/tjanster/internationella-uppdrag',
+    },
+    {
+      icon: TrendingUp,
+      title: t('services.area4title'),
+      subtitle: t('services.area4subtitle'),
+      description: t('services.area4desc'),
+      path: '/tjanster/management',
+    },
+  ];
 
   return (
     <section id="affarsomraden" className="py-24 md:py-32 bg-white">
@@ -93,7 +93,7 @@ export const Services = ({ onNavigate }: ServicesProps) => {
 
               {/* CTA */}
               <div className="flex items-center gap-2 mt-auto text-sm font-medium text-slate-600 group-hover:text-slate-900 transition-colors">
-                <span>Utforska</span>
+                <span>{t('services.explore')}</span>
                 <ArrowRight className="w-4 h-4 -translate-x-1 group-hover:translate-x-0 opacity-60 group-hover:opacity-100 transition-all duration-200" />
               </div>
             </motion.button>

@@ -2,23 +2,26 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Clock } from 'lucide-react';
 import heroImage from '../Delita bilder/Tjänster/cht-gsml-QfQW294I8sQ-unsplash.jpg';
+import { useTranslation } from '../i18n';
 
 interface Props {
   onNavigate: (path: string) => void;
 }
 
-const services = [
-  { label: 'Löpande bokföring', path: '/nyheter-kommer-snart', active: false },
-  { label: 'Moms & skatt', path: '/nyheter-kommer-snart', active: false },
-  { label: 'Lön & personaladministration', path: '/nyheter-kommer-snart', active: false },
-  { label: 'Bokslut & årsredovisning', path: '/nyheter-kommer-snart', active: false },
-  { label: 'Deklaration', path: '/nyheter-kommer-snart', active: false },
-  { label: 'Budget & prognos', path: '/nyheter-kommer-snart', active: false },
-  { label: 'Hållbarhetsrapportering', path: '/nyheter-kommer-snart', active: false },
-  { label: 'Kassaflödesanalys', path: '/nyheter-kommer-snart', active: false },
-];
-
 export const RedovisningRapportering = ({ onNavigate }: Props) => {
+  const { t } = useTranslation();
+
+  const services = [
+    { labelKey: 'nav.ba1i1', path: '/nyheter-kommer-snart', active: false },
+    { labelKey: 'nav.ba1i2', path: '/nyheter-kommer-snart', active: false },
+    { labelKey: 'nav.ba1i3', path: '/nyheter-kommer-snart', active: false },
+    { labelKey: 'nav.ba1i4', path: '/nyheter-kommer-snart', active: false },
+    { labelKey: 'nav.ba1i5', path: '/nyheter-kommer-snart', active: false },
+    { labelKey: 'nav.ba1i6', path: '/nyheter-kommer-snart', active: false },
+    { labelKey: 'nav.ba1i7', path: '/nyheter-kommer-snart', active: false },
+    { labelKey: 'nav.ba1i8', path: '/nyheter-kommer-snart', active: false },
+  ];
+
   return (
     <div className="pt-0 min-h-screen bg-white font-sans">
 
@@ -27,7 +30,7 @@ export const RedovisningRapportering = ({ onNavigate }: Props) => {
         <div className="absolute inset-0">
           <img
             src={heroImage}
-            alt="Redovisning & rapportering"
+            alt={t('redovisningRapportering.imgAlt')}
             loading="eager"
             decoding="async"
             className="w-full h-full object-cover"
@@ -41,7 +44,7 @@ export const RedovisningRapportering = ({ onNavigate }: Props) => {
             transition={{ duration: 0.8 }}
             className="font-serif text-5xl md:text-7xl font-medium mb-6"
           >
-            Redovisning & rapportering
+            {t('redovisningRapportering.heading')}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -49,7 +52,7 @@ export const RedovisningRapportering = ({ onNavigate }: Props) => {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="text-lg md:text-2xl text-slate-200 font-light"
           >
-            Noggrann redovisning och tydlig rapportering – grunden för din ekonomiska framgång
+            {t('redovisningRapportering.tagline')}
           </motion.p>
         </div>
       </section>
@@ -64,9 +67,7 @@ export const RedovisningRapportering = ({ onNavigate }: Props) => {
             transition={{ duration: 0.8 }}
             className="text-lg text-slate-600 leading-relaxed"
           >
-            Vi hanterar hela din ekonomiska administration – från löpande bokföring och momsredovisning
-            till bokslut och hållbarhetsrapportering. Med oss får du ett komplett och strukturerat
-            underlag för välgrundade affärsbeslut.
+            {t('redovisningRapportering.intro')}
           </motion.p>
         </div>
       </section>
@@ -77,7 +78,7 @@ export const RedovisningRapportering = ({ onNavigate }: Props) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {services.map((service, i) => (
               <motion.button
-                key={service.label}
+                key={service.labelKey}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -85,10 +86,10 @@ export const RedovisningRapportering = ({ onNavigate }: Props) => {
                 onClick={() => onNavigate(service.path)}
                 className="group flex items-center justify-between bg-white rounded-xl px-6 py-5 shadow-sm border border-slate-100 hover:shadow-md hover:border-slate-200 transition-all text-left"
               >
-                <span className="text-slate-700 font-medium text-sm">{service.label}</span>
+                <span className="text-slate-700 font-medium text-sm">{t(service.labelKey)}</span>
                 <span className="flex items-center gap-1.5 text-xs text-slate-400 ml-4 shrink-0">
                   <Clock className="w-3.5 h-3.5" />
-                  Nyheter kommer snart
+                  {t('shared.comingSoon')}
                 </span>
               </motion.button>
             ))}
@@ -106,7 +107,7 @@ export const RedovisningRapportering = ({ onNavigate }: Props) => {
             transition={{ duration: 0.8 }}
             className="font-serif text-3xl md:text-4xl text-slate-900 mb-6"
           >
-            Vill du veta mer?
+            {t('shared.wantToKnowMore')}
           </motion.h2>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -119,13 +120,13 @@ export const RedovisningRapportering = ({ onNavigate }: Props) => {
               onClick={() => onNavigate('/boka-mote')}
               className="px-8 py-3.5 bg-delita-navy text-slate-800 font-medium rounded-full hover:bg-[#D6CFC3] transition-colors"
             >
-              Boka ett möte
+              {t('shared.bookMeeting')}
             </button>
             <button
               onClick={() => onNavigate('/kontakt')}
               className="flex items-center justify-center gap-2 px-8 py-3.5 border border-slate-300 text-slate-700 font-medium rounded-full hover:bg-slate-50 transition-colors"
             >
-              Kontakta oss <ArrowRight className="w-4 h-4" />
+              {t('shared.contactUs')} <ArrowRight className="w-4 h-4" />
             </button>
           </motion.div>
         </div>

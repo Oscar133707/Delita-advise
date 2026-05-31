@@ -1,12 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Clock, ArrowLeft } from 'lucide-react';
+import { useTranslation } from '../i18n';
 
 interface NyheterKommerSnartProps {
   onNavigate: (path: string) => void;
 }
 
 export const NyheterKommerSnart = ({ onNavigate }: NyheterKommerSnartProps) => {
+  const { t } = useTranslation();
+
   return (
     <div className="pt-24 min-h-screen bg-white flex items-center justify-center">
       <motion.div
@@ -20,11 +23,11 @@ export const NyheterKommerSnart = ({ onNavigate }: NyheterKommerSnartProps) => {
         </div>
 
         <h1 className="font-serif text-4xl md:text-5xl text-slate-900 mb-4">
-          Nyheter kommer snart!
+          {t('shared.comingSoonHeading')}
         </h1>
 
         <p className="text-slate-600 text-lg font-light leading-relaxed mb-10">
-          Den här tjänsten är under uppbyggnad. Håll utkik – vi återkommer snart med mer information.
+          {t('shared.comingSoonDesc')}
         </p>
 
         <button
@@ -32,7 +35,7 @@ export const NyheterKommerSnart = ({ onNavigate }: NyheterKommerSnartProps) => {
           className="inline-flex items-center gap-2 px-8 py-3.5 bg-delita-navy text-slate-800 font-medium rounded-full hover:bg-[#D6CFC3] transition-colors duration-300 shadow-lg"
         >
           <ArrowLeft className="w-4 h-4" />
-          Tillbaka till startsidan
+          {t('shared.backToHome')}
         </button>
       </motion.div>
     </div>

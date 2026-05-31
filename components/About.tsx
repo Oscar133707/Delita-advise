@@ -1,7 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Award, Users, Lightbulb, Clock, Shield } from 'lucide-react';
+import { Award, Users, Lightbulb, Shield } from 'lucide-react';
 import { useTranslation } from '../i18n';
+import johannaPhoto from '../Delita bilder/Team/johanna-andersson.jpg';
+import niclasPhoto from '../Delita bilder/Team/niclas-herslow.jpg';
 
 interface AboutProps {
   onNavigate: (path: string) => void;
@@ -215,9 +217,9 @@ export const About = ({ onNavigate }: AboutProps) => {
       </section>
 
       {/* TEAM SECTION */}
-      <section className="hidden py-24 bg-slate-50 border-t border-slate-100">
+      <section className="py-24 bg-slate-50 border-t border-slate-100">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
+          <div className="text-center mb-20">
             <span className="text-slate-700 text-sm font-bold tracking-[0.2em] uppercase mb-4 block">
               {t('about.teamLabel')}
             </span>
@@ -226,35 +228,113 @@ export const About = ({ onNavigate }: AboutProps) => {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {[1, 2, 3].map((item) => (
-              <motion.div
-                key={item}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: item * 0.1 }}
-                className="group bg-white rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
-              >
-                <div className="aspect-[3/4] bg-slate-200 relative overflow-hidden">
-                  <img
-                    src={`https://images.unsplash.com/photo-${item === 1 ? '1560250097-0b93528c311a' : item === 2 ? '1573496359142-b8d87734a5a2' : '1519085360753-af0119f7cbe7'}?auto=format&fit=crop&q=80&w=800`}
-                    alt="Team member"
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
-                  />
+          <div className="space-y-20">
+
+            {/* Johanna Andersson */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-12 items-start"
+            >
+              <div className="group relative aspect-[3/4] rounded-sm overflow-hidden shadow-xl">
+                <img
+                  src={johannaPhoto}
+                  alt="Johanna Andersson"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
+              <div className="space-y-6">
+                <div>
+                  <h3 className="font-serif text-3xl font-medium text-slate-900">Johanna Andersson</h3>
+                  <p className="text-slate-600 text-sm font-bold uppercase tracking-[0.2em] mt-2">{t('about.johannaRole')}</p>
                 </div>
-                <div className="p-6 text-center">
-                  <h3 className="font-serif text-xl font-semibold text-slate-900">
-                    {item === 1 ? 'Magnus Andersson' : item === 2 ? 'Anna Lindberg' : 'Johan Nilsson'}
-                  </h3>
-                  <p className="text-slate-700 text-sm font-medium uppercase tracking-wider mt-1">
-                    {item === 1 ? t('about.teamRole1') : item === 2 ? t('about.teamRole2') : t('about.teamRole3')}
-                  </p>
+                <div className="space-y-4 text-slate-600 leading-relaxed font-light">
+                  <p>{t('about.johannaP1')}</p>
+                  <p>{t('about.johannaP2')}</p>
+                  <p>{t('about.johannaP3')}</p>
+                  <p>{t('about.johannaP4')}</p>
                 </div>
-              </motion.div>
-            ))}
+                <p className="font-serif text-lg text-slate-700 italic border-l-2 border-delita-navy pl-5">
+                  "{t('about.johannaQuote')}"
+                </p>
+              </div>
+            </motion.div>
+
+            <div className="border-t border-slate-200" />
+
+            {/* Niclas Herslow */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-12 items-start"
+            >
+              <div className="space-y-6 lg:order-1">
+                <div>
+                  <h3 className="font-serif text-3xl font-medium text-slate-900">Niclas Herslow</h3>
+                  <p className="text-slate-600 text-sm font-bold uppercase tracking-[0.2em] mt-2">{t('about.niclasRole')}</p>
+                </div>
+                <div className="space-y-4 text-slate-600 leading-relaxed font-light">
+                  <p>{t('about.niclasP1')}</p>
+                  <p>{t('about.niclasP2')}</p>
+                  <p>{t('about.niclasP3')}</p>
+                  <p>{t('about.niclasP4')}</p>
+                  <p>{t('about.niclasP5')}</p>
+                </div>
+                <p className="font-serif text-lg text-slate-700 italic border-l-2 border-delita-navy pl-5">
+                  "{t('about.niclasQuote')}"
+                </p>
+              </div>
+              <div className="group relative aspect-[3/4] rounded-sm overflow-hidden shadow-xl lg:order-2">
+                <img
+                  src={niclasPhoto}
+                  alt="Niclas Herslow"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
+            </motion.div>
+
+            <div className="border-t border-slate-200" />
+
+            {/* Tommy Magnusson */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-12 items-start"
+            >
+              <div className="relative aspect-[3/4] rounded-sm overflow-hidden shadow-xl bg-slate-100 flex items-center justify-center">
+                <div className="text-center px-8">
+                  <div className="w-28 h-28 rounded-full bg-slate-200 mx-auto mb-5 flex items-center justify-center">
+                    <span className="font-serif text-4xl text-slate-400">TM</span>
+                  </div>
+                  <p className="text-slate-400 text-sm tracking-wide">{t('about.tommyPhotoSoon')}</p>
+                </div>
+              </div>
+              <div className="space-y-6">
+                <div>
+                  <h3 className="font-serif text-3xl font-medium text-slate-900">Tommy Magnusson</h3>
+                  <p className="text-slate-600 text-sm font-bold uppercase tracking-[0.2em] mt-2">{t('about.tommyRole')}</p>
+                </div>
+                <div className="space-y-4 text-slate-600 leading-relaxed font-light">
+                  <p>{t('about.tommyP1')}</p>
+                  <p>{t('about.tommyP2')}</p>
+                  <p>{t('about.tommyP3')}</p>
+                </div>
+                <p className="font-serif text-lg text-slate-700 italic border-l-2 border-delita-navy pl-5">
+                  "{t('about.tommyQuote')}"
+                </p>
+              </div>
+            </motion.div>
+
           </div>
         </div>
       </section>

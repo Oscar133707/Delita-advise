@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Menu, X, ChevronDown, ChevronRight, Globe, User, Instagram, Facebook } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import logoImage from '../Images:Logos/delita-advise-new-logo.png';
+import logoImage from '../Images:Logos/logo-no-background.png';
 import { useTranslation } from '../i18n';
 
 interface NavbarProps {
@@ -10,67 +10,67 @@ interface NavbarProps {
   currentRoute: string;
 }
 
-const businessAreas = [
-  {
-    name: 'Redovisning & rapportering',
-    path: '/tjanster/redovisning-rapportering',
-    items: [
-      { label: 'Löpande bokföring', path: '/nyheter-kommer-snart' },
-      { label: 'Moms & skatt', path: '/nyheter-kommer-snart' },
-      { label: 'Lön & personaladministration', path: '/nyheter-kommer-snart' },
-      { label: 'Bokslut & årsredovisning', path: '/nyheter-kommer-snart' },
-      { label: 'Deklaration', path: '/nyheter-kommer-snart' },
-      { label: 'Budget & prognos', path: '/nyheter-kommer-snart' },
-      { label: 'Hållbarhetsrapportering', path: '/nyheter-kommer-snart' },
-      { label: 'Kassaflödesanalys', path: '/nyheter-kommer-snart' },
-    ],
-  },
-  {
-    name: 'HR Human Resource',
-    path: '/tjanster/hr-human-resource',
-    items: [
-      { label: 'Bemanning', path: '/nyheter-kommer-snart' },
-      { label: 'Interim', path: '/tjanster/interim' },
-      { label: 'Rekrytering', path: '/tjanster/rekrytering' },
-      { label: 'Second opinion', path: '/nyheter-kommer-snart' },
-      { label: 'Hyr-köp', path: '/nyheter-kommer-snart' },
-      { label: 'Arbetsrätt', path: '/nyheter-kommer-snart' },
-    ],
-  },
-  {
-    name: 'Internationella & specialiserade uppdrag',
-    path: '/tjanster/internationella-uppdrag',
-    items: [
-      { label: 'Bolagsstrukturering för utländska ägare', path: '/nyheter-kommer-snart' },
-      { label: 'Stiftelser, föreningar och specialbolag', path: '/nyheter-kommer-snart' },
-      { label: 'Skatterådgivning', path: '/nyheter-kommer-snart' },
-    ],
-  },
-  {
-    name: 'Management (ägare, styrelse, ledningsgrupp)',
-    path: '/tjanster/management',
-    items: [
-      { label: 'Ekonomistyrning', path: '/nyheter-kommer-snart' },
-      { label: 'Bolagsrätt & associationsrätt', path: '/nyheter-kommer-snart' },
-      { label: 'Företagsöverlåtelser / M&A', path: '/nyheter-kommer-snart' },
-      { label: 'Omstruktureringar & generationsskifte', path: '/nyheter-kommer-snart' },
-      { label: 'Emissioner', path: '/nyheter-kommer-snart' },
-      { label: 'Styrelseuppdrag', path: '/nyheter-kommer-snart' },
-      { label: 'Rådgivning, styrning & affärsstöd', path: '/nyheter-kommer-snart' },
-      { label: 'Tillväxtanalys', path: '/nyheter-kommer-snart' },
-    ],
-  },
-];
-
-const branschItems = [
-  { label: 'Musiker / Producent', path: '/nyheter-kommer-snart' },
-  { label: 'Influencer / Content creator', path: '/nyheter-kommer-snart' },
-  { label: 'Bostadsrättsföreningar', path: '/nyheter-kommer-snart' },
-  { label: 'Franchisetagare', path: '/nyheter-kommer-snart' },
-];
-
 export const Navbar = ({ onNavigate, currentRoute }: NavbarProps) => {
   const { language, toggleLanguage, t } = useTranslation();
+
+  const businessAreas = [
+    {
+      name: t('nav.ba1'),
+      path: '/tjanster/redovisning-rapportering',
+      items: [
+        { label: t('nav.ba1i1'), path: '/nyheter-kommer-snart' },
+        { label: t('nav.ba1i2'), path: '/nyheter-kommer-snart' },
+        { label: t('nav.ba1i3'), path: '/nyheter-kommer-snart' },
+        { label: t('nav.ba1i4'), path: '/nyheter-kommer-snart' },
+        { label: t('nav.ba1i5'), path: '/nyheter-kommer-snart' },
+        { label: t('nav.ba1i6'), path: '/nyheter-kommer-snart' },
+        { label: t('nav.ba1i7'), path: '/nyheter-kommer-snart' },
+        { label: t('nav.ba1i8'), path: '/nyheter-kommer-snart' },
+      ],
+    },
+    {
+      name: t('nav.ba2'),
+      path: '/tjanster/hr-human-resource',
+      items: [
+        { label: t('nav.ba2i1'), path: '/nyheter-kommer-snart' },
+        { label: t('nav.ba2i2'), path: '/tjanster/interim' },
+        { label: t('nav.ba2i3'), path: '/tjanster/rekrytering' },
+        { label: t('nav.ba2i4'), path: '/nyheter-kommer-snart' },
+        { label: t('nav.ba2i5'), path: '/nyheter-kommer-snart' },
+        { label: t('nav.ba2i6'), path: '/nyheter-kommer-snart' },
+      ],
+    },
+    {
+      name: t('nav.ba3'),
+      path: '/tjanster/internationella-uppdrag',
+      items: [
+        { label: t('nav.ba3i1'), path: '/nyheter-kommer-snart' },
+        { label: t('nav.ba3i2'), path: '/nyheter-kommer-snart' },
+        { label: t('nav.ba3i3'), path: '/nyheter-kommer-snart' },
+      ],
+    },
+    {
+      name: t('nav.ba4'),
+      path: '/tjanster/management',
+      items: [
+        { label: t('nav.ba4i1'), path: '/nyheter-kommer-snart' },
+        { label: t('nav.ba4i2'), path: '/nyheter-kommer-snart' },
+        { label: t('nav.ba4i3'), path: '/nyheter-kommer-snart' },
+        { label: t('nav.ba4i4'), path: '/nyheter-kommer-snart' },
+        { label: t('nav.ba4i5'), path: '/nyheter-kommer-snart' },
+        { label: t('nav.ba4i6'), path: '/nyheter-kommer-snart' },
+        { label: t('nav.ba4i7'), path: '/nyheter-kommer-snart' },
+        { label: t('nav.ba4i8'), path: '/nyheter-kommer-snart' },
+      ],
+    },
+  ];
+
+  const branschItems = [
+    { label: t('nav.br1'), path: '/nyheter-kommer-snart' },
+    { label: t('nav.br2'), path: '/nyheter-kommer-snart' },
+    { label: t('nav.br3'), path: '/nyheter-kommer-snart' },
+    { label: t('nav.br4'), path: '/nyheter-kommer-snart' },
+  ];
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
@@ -224,7 +224,7 @@ export const Navbar = ({ onNavigate, currentRoute }: NavbarProps) => {
               className={`flex items-center text-sm font-medium transition-colors tracking-wide text-slate-600 hover:text-slate-700`}
               onClick={(e) => e.preventDefault()}
             >
-              Branschspecifik
+              {t('nav.branschLabel')}
               <ChevronDown className={`w-4 h-4 ml-1 transition-transform duration-200 ${hoverBransch ? 'rotate-180' : ''}`} />
             </button>
 
@@ -411,7 +411,7 @@ export const Navbar = ({ onNavigate, currentRoute }: NavbarProps) => {
                               <button
                                 onClick={() => setOpenArea(openArea === area.name ? null : area.name)}
                                 className="p-1 touch-manipulation"
-                                aria-label="Visa undersidor"
+                                aria-label={t('nav.showSubpages')}
                               >
                                 <ChevronDown
                                   className={`w-4 h-4 text-slate-500 transition-transform duration-200 ${
@@ -455,7 +455,7 @@ export const Navbar = ({ onNavigate, currentRoute }: NavbarProps) => {
                     onClick={() => setIsBranschOpen((open) => !open)}
                     className="flex items-center gap-2 font-serif text-2xl tracking-wide text-slate-900 touch-manipulation font-normal"
                   >
-                    <span>Branschspecifik</span>
+                    <span>{t('nav.branschLabel')}</span>
                     <ChevronDown
                       className={`w-5 h-5 transition-transform duration-200 ${isBranschOpen ? 'rotate-180' : ''}`}
                     />

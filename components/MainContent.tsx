@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import minaRadImage from '../Delita bilder/Nya/mina-rad-qFSQFSmfZkA-unsplash.jpg';
+import teamImage from '../Delita bilder/Team/johanna-niclas.jpg';
 import { useTranslation } from '../i18n';
 
 export const MainContent = () => {
@@ -22,8 +22,8 @@ export const MainContent = () => {
           >
             <div className="relative aspect-[4/5] md:aspect-square lg:aspect-[4/5] overflow-hidden rounded-sm shadow-2xl">
               <img
-                src={minaRadImage}
-                alt="Delita Advise team consultation"
+                src={teamImage}
+                alt="Johanna Andersson och Niclas Herslow, Delita Advise"
                 loading="lazy"
                 decoding="async"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
