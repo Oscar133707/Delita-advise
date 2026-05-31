@@ -164,7 +164,7 @@ export const Rekrytering = ({ onNavigate }: RekryteringProps) => {
           </p>
           <button
             onClick={() => onNavigate('/boka-mote')}
-            className="inline-flex items-center gap-2 px-8 py-3.5 bg-slate-900 text-white font-medium rounded-full hover:bg-slate-700 transition-colors duration-300"
+            className="inline-flex items-center gap-2 px-8 py-3.5 bg-delita-navy text-slate-800 font-medium rounded-full hover:bg-[#D6CFC3] transition-colors"
           >
             {t('shared.bookMeeting')}
             <ArrowRight className="w-4 h-4" />
