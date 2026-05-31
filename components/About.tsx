@@ -274,7 +274,7 @@ export const About = ({ onNavigate }: AboutProps) => {
               transition={{ duration: 0.8 }}
               className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-12 items-start"
             >
-              <div className="space-y-6 lg:order-1">
+              <div className="space-y-6 order-2 lg:order-1">
                 <div>
                   <h3 className="font-serif text-3xl font-medium text-slate-900">Niclas Herslow</h3>
                   <p className="text-slate-600 text-sm font-bold uppercase tracking-[0.2em] mt-2">{t('about.niclasRole')}</p>
@@ -290,7 +290,7 @@ export const About = ({ onNavigate }: AboutProps) => {
                   "{t('about.niclasQuote')}"
                 </p>
               </div>
-              <div className="group relative aspect-[3/4] rounded-sm overflow-hidden shadow-xl lg:order-2">
+              <div className="group relative aspect-[3/4] rounded-sm overflow-hidden shadow-xl order-1 lg:order-2">
                 <img
                   src={niclasPhoto}
                   alt="Niclas Herslow"
