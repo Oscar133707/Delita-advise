@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Award, Users, Lightbulb, Shield } from 'lucide-react';
 import { useTranslation } from '../i18n';
 import johannaPhoto from '../Delita bilder/Team/johanna-andersson.jpg';
 import niclasPhoto from '../Delita bilder/Team/niclas-herslow.jpg';
+import tommyPhoto from '../Delita bilder/Team/tommy-magnusson.jpg';
 
 interface AboutProps {
   onNavigate: (path: string) => void;
@@ -12,27 +12,10 @@ interface AboutProps {
 export const About = ({ onNavigate }: AboutProps) => {
   const { t } = useTranslation();
 
-  const values = [
-    {
-      icon: Users,
-      title: t('about.value1title'),
-      desc: t('about.value1desc'),
-    },
-    {
-      icon: Award,
-      title: t('about.value2title'),
-      desc: t('about.value2desc'),
-    },
-    {
-      icon: Shield,
-      title: t('about.value3title'),
-      desc: t('about.value3desc'),
-    },
-    {
-      icon: Lightbulb,
-      title: t('about.value4title'),
-      desc: t('about.value4desc'),
-    },
+  const perCards = [
+    { letter: 'P', title: t('about.perTitle1'), desc: t('about.perDesc1') },
+    { letter: 'E', title: t('about.perTitle2'), desc: t('about.perDesc2') },
+    { letter: 'R', title: t('about.perTitle3'), desc: t('about.perDesc3') },
   ];
 
   return (
@@ -116,70 +99,45 @@ export const About = ({ onNavigate }: AboutProps) => {
         </div>
       </section>
 
-      {/* VALUES SECTION */}
-      <section className="py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      {/* LEDSTJÄRNOR SECTION */}
+      <section className="py-32 bg-slate-50">
+        <div className="max-w-5xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <span className="text-slate-700 text-sm font-bold tracking-[0.2em] uppercase mb-4 block">
+              {t('about.ledstjarnaLabel')}
+            </span>
+            <h2 className="font-serif text-3xl md:text-5xl text-slate-900 mb-8">
+              {t('about.ledstjarnaHeading')}
+            </h2>
+            <div className="w-20 h-1 bg-delita-navy mx-auto mb-8" />
+            <p className="text-slate-600 font-light leading-relaxed text-lg max-w-3xl mx-auto">
+              {t('about.ledstjarnaSubtitle')}
+            </p>
+          </motion.div>
 
-            {/* Text Left */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="order-2 lg:order-1 space-y-10"
-            >
-              <div>
-                <span className="text-slate-700 text-sm font-bold tracking-[0.2em] uppercase mb-4 block">
-                  {t('about.valuesLabel')}
-                </span>
-                <h2 className="font-serif text-3xl md:text-4xl text-slate-900 mb-6">
-                  {t('about.valuesHeading')}
-                </h2>
-                <p className="text-slate-600 font-light leading-relaxed mb-8">
-                  {t('about.valuesSubtitle')}
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {values.map((item, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="flex flex-col space-y-3"
-                  >
-                    <div className="flex items-center space-x-3 mb-2">
-                      <div className="p-2 bg-white rounded-full shadow-sm text-slate-700">
-                        <item.icon className="w-5 h-5" />
-                      </div>
-                      <h3 className="font-serif text-lg font-semibold text-slate-900">{item.title}</h3>
-                    </div>
-                    <p className="text-sm text-slate-600 leading-relaxed pl-12 border-l border-slate-200">
-                      {item.desc}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Image Right */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="order-1 lg:order-2 relative aspect-[4/5] lg:aspect-square rounded-sm overflow-hidden shadow-2xl group"
-            >
-              <img
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1200"
-                alt="Strategy session"
-                loading="lazy"
-                decoding="async"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-            </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {perCards.map((card, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                className="flex flex-col items-center text-center p-10 bg-white rounded-sm shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 group"
+              >
+                <div className="w-16 h-16 rounded-full bg-slate-50 group-hover:bg-delita-navy flex items-center justify-center mb-6 transition-colors duration-500">
+                  <span className="font-serif text-4xl font-bold text-slate-700 group-hover:text-slate-900 transition-colors duration-500">{card.letter}</span>
+                </div>
+                <h3 className="font-serif text-xl font-semibold text-slate-900 mb-4">{card.title}</h3>
+                <p className="text-slate-600 font-light leading-relaxed">{card.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -311,13 +269,14 @@ export const About = ({ onNavigate }: AboutProps) => {
               transition={{ duration: 0.8 }}
               className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-12 items-start"
             >
-              <div className="relative aspect-[3/4] rounded-sm overflow-hidden shadow-xl bg-slate-100 flex items-center justify-center">
-                <div className="text-center px-8">
-                  <div className="w-28 h-28 rounded-full bg-slate-200 mx-auto mb-5 flex items-center justify-center">
-                    <span className="font-serif text-4xl text-slate-400">TM</span>
-                  </div>
-                  <p className="text-slate-400 text-sm tracking-wide">{t('about.tommyPhotoSoon')}</p>
-                </div>
+              <div className="group relative aspect-[3/4] rounded-sm overflow-hidden shadow-xl">
+                <img
+                  src={tommyPhoto}
+                  alt="Tommy Magnusson"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                />
               </div>
               <div className="space-y-6">
                 <div>

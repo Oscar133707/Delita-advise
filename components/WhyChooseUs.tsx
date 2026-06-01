@@ -31,7 +31,6 @@ export const WhyChooseUs = () => {
 
   return (
     <section className="py-24 relative overflow-hidden bg-slate-50">
-      {/* Subtle textured background or gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-white to-slate-50 opacity-50" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">

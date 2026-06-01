@@ -86,23 +86,28 @@ export const Footer = ({ onNavigate }: FooterProps) => {
             </ul>
           </div>
 
-          {/* Column 3 - Services */}
+          {/* Column 3 - Business Areas */}
           <div className="space-y-8">
             <h4 className="text-sm font-bold uppercase tracking-widest text-slate-700">{t('footer.ourServices')}</h4>
             <ul className="space-y-4">
               <li>
-                <button onClick={() => onNavigate('/tjanster/loner-medarbetare')} className="text-slate-600 hover:text-slate-800 hover:translate-x-1 transition-all duration-300 text-left">
-                  {t('footer.payroll')}
+                <button onClick={() => onNavigate('/tjanster/redovisning-rapportering')} className="text-slate-600 hover:text-slate-800 hover:translate-x-1 transition-all duration-300 text-left">
+                  {t('footer.area1')}
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate('/tjanster/redovisning-beskattning')} className="text-slate-600 hover:text-slate-800 hover:translate-x-1 transition-all duration-300 text-left">
-                  {t('footer.accounting')}
+                <button onClick={() => onNavigate('/tjanster/hr-human-resource')} className="text-slate-600 hover:text-slate-800 hover:translate-x-1 transition-all duration-300 text-left">
+                  {t('footer.area2')}
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate('/tjanster/radgivning')} className="text-slate-600 hover:text-slate-800 hover:translate-x-1 transition-all duration-300 text-left">
-                  {t('footer.advisory')}
+                <button onClick={() => onNavigate('/tjanster/internationella-uppdrag')} className="text-slate-600 hover:text-slate-800 hover:translate-x-1 transition-all duration-300 text-left">
+                  {t('footer.area3')}
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate('/tjanster/management')} className="text-slate-600 hover:text-slate-800 hover:translate-x-1 transition-all duration-300 text-left">
+                  {t('footer.area4')}
                 </button>
               </li>
             </ul>

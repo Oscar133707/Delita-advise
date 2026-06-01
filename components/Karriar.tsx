@@ -16,10 +16,10 @@ export const Karriar = ({ onNavigate }: KarriarProps) => {
     phone: '',
     linkedin: '',
     position: '',
-    coverLetter: '',
     gdpr: false
   });
   const [file, setFile] = useState<File | null>(null);
+  const [coverLetterFile, setCoverLetterFile] = useState<File | null>(null);
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
 
   const benefits = [
@@ -37,6 +37,12 @@ export const Karriar = ({ onNavigate }: KarriarProps) => {
     }
   };
 
+  const handleCoverLetterFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files?.[0]) {
+      setCoverLetterFile(e.target.files[0]);
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('submitting');
@@ -49,10 +55,10 @@ export const Karriar = ({ onNavigate }: KarriarProps) => {
         phone: '',
         linkedin: '',
         position: '',
-        coverLetter: '',
         gdpr: false
       });
       setFile(null);
+      setCoverLetterFile(null);
     }, 1500);
   };
 
@@ -106,7 +112,8 @@ export const Karriar = ({ onNavigate }: KarriarProps) => {
             <h2 className="font-serif text-3xl md:text-4xl text-slate-900 mb-8">{t('career.introHeading')}</h2>
             <p className="text-slate-600 leading-relaxed font-light mb-8">{t('career.introP1')}</p>
             <p className="text-slate-600 leading-relaxed font-light mb-8">{t('career.introP2')}</p>
-            <p className="text-slate-600 leading-relaxed font-light mb-8">{t('career.introP3')}</p>
+            <h3 className="font-serif text-2xl font-medium text-slate-900 mt-10 mb-4">{t('career.hosVaraKunderHeading')}</h3>
+            <p className="text-slate-600 leading-relaxed font-light mb-8">{t('career.hosVaraKunderText')}</p>
             <p className="text-slate-600 leading-relaxed">{t('career.introP4')}</p>
           </motion.div>
         </div>
@@ -147,7 +154,6 @@ export const Karriar = ({ onNavigate }: KarriarProps) => {
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="font-serif text-3xl md:text-4xl text-slate-900 mb-6">{t('career.openingsHeading')}</h2>
-            <p className="text-slate-600 font-light">{t('career.openingsText')}</p>
           </div>
         </div>
       </section>
@@ -274,9 +280,10 @@ export const Karriar = ({ onNavigate }: KarriarProps) => {
                         className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-sm focus:ring-2 focus:ring-delita-navy focus:border-transparent outline-none transition-all"
                       >
                         <option value="">{t('career.positionPlaceholder')}</option>
-                        <option value="Spontanansökan">{t('career.positionSpontan')}</option>
-                        <option value="Redovisningskonsult">{t('career.positionAccountant')}</option>
-                        <option value="Löneadministratör">{t('career.positionPayroll')}</option>
+                        <option value="Rekrytering">{t('career.positionRekrytering')}</option>
+                        <option value="Interimuppdrag">{t('career.positionInterim')}</option>
+                        <option value="Uthyrning">{t('career.positionUthyrning')}</option>
+                        <option value="Hos Delita Advise">{t('career.positionHosDelita')}</option>
                         <option value="Praktik">{t('career.positionIntern')}</option>
                       </select>
                     </div>
@@ -301,14 +308,22 @@ export const Karriar = ({ onNavigate }: KarriarProps) => {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">{t('career.coverLetter')} *</label>
-                      <textarea
-                        name="coverLetter" required
-                        rows={6}
-                        value={formState.coverLetter} onChange={handleChange}
-                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-sm focus:ring-2 focus:ring-delita-navy focus:border-transparent outline-none transition-all resize-none"
-                        placeholder={t('career.coverLetterPlaceholder')}
-                      ></textarea>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">{t('career.coverLetter')}</label>
+                      <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-slate-200 border-dashed rounded-sm hover:bg-slate-50 transition-colors">
+                        <div className="space-y-1 text-center">
+                          <Upload className="mx-auto h-12 w-12 text-slate-400" />
+                          <div className="flex text-sm text-slate-600 justify-center">
+                            <label htmlFor="cover-letter-upload" className="relative cursor-pointer bg-white rounded-md font-medium text-slate-700 hover:text-slate-800 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-delita-navy">
+                              <span>{t('career.uploadFile')}</span>
+                              <input id="cover-letter-upload" name="cover-letter-upload" type="file" className="sr-only" onChange={handleCoverLetterFileChange} accept=".pdf,.doc,.docx" />
+                            </label>
+                            <p className="pl-1">{t('career.dragDrop')}</p>
+                          </div>
+                          <p className="text-xs text-slate-500">
+                            {coverLetterFile ? coverLetterFile.name : t('career.fileTypes')}
+                          </p>
+                        </div>
+                      </div>
                     </div>
 
                     <div className="flex items-start">
