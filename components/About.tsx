@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Mail } from 'lucide-react';
 import { useTranslation } from '../i18n';
 import johannaPhoto from '../Delita bilder/Team/johanna-andersson.jpg';
 import niclasPhoto from '../Delita bilder/Team/niclas-herslow.jpg';
@@ -291,6 +292,33 @@ export const About = ({ onNavigate }: AboutProps) => {
                 <p className="font-serif text-lg text-slate-700 italic border-l-2 border-delita-navy pl-5">
                   "{t('about.tommyQuote')}"
                 </p>
+              </div>
+            </motion.div>
+
+            <div className="border-t border-slate-200" />
+
+            {/* Övriga medarbetare */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <h3 className="font-serif text-2xl md:text-3xl font-medium text-slate-900 text-center mb-10">
+                {t('about.otherTeamHeading')}
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div className="bg-white rounded-sm border border-slate-100 shadow-sm p-6 text-center">
+                  <h4 className="font-serif text-xl font-medium text-slate-900">Jenny Lundberg</h4>
+                  <p className="text-slate-600 text-sm font-bold uppercase tracking-[0.2em] mt-2">{t('about.jennyRole')}</p>
+                  <a
+                    href="mailto:jl@delita.se"
+                    className="inline-flex items-center gap-2 mt-4 text-sm text-slate-600 hover:text-slate-900 transition-colors"
+                  >
+                    <Mail className="w-4 h-4" />
+                    jl@delita.se
+                  </a>
+                </div>
               </div>
             </motion.div>
 

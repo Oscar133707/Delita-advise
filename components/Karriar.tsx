@@ -151,9 +151,32 @@ export const Karriar = ({ onNavigate }: KarriarProps) => {
 
       {/* OPENINGS */}
       <section className="py-20 bg-white border-b border-slate-100">
-        <div className="max-w-5xl mx-auto px-6">
+        <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="font-serif text-3xl md:text-4xl text-slate-900 mb-6">{t('career.openingsHeading')}</h2>
+            <p className="text-slate-600 leading-relaxed font-light max-w-2xl mx-auto">{t('career.openingsIntro')}</p>
+          </div>
+
+          <motion.ul
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 max-w-3xl mx-auto mb-12"
+          >
+            {['openingsRole1','openingsRole2','openingsRole3','openingsRole4','openingsRole5','openingsRole6','openingsRole7','openingsRole8','openingsRole9','openingsRole10','openingsRole11','openingsRole12'].map((roleKey) => (
+              <li key={roleKey} className="flex items-start gap-3 text-slate-700">
+                <ChevronRight className="w-4 h-4 mt-1 shrink-0 text-slate-400" />
+                <span>{t(`career.${roleKey}`)}</span>
+              </li>
+            ))}
+          </motion.ul>
+
+          <div className="max-w-2xl mx-auto space-y-5 text-slate-600 leading-relaxed font-light text-center">
+            <p>{t('career.openingsOutro1')}</p>
+            <p>{t('career.openingsOutro2')}</p>
+            <p>{t('career.openingsOutro3')}</p>
+            <p>{t('career.openingsOutro4')}</p>
+            <p className="text-slate-700">{t('career.openingsContact')}</p>
           </div>
         </div>
       </section>

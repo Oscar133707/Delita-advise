@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Phone, Video, Building, Clock, CheckCircle, ArrowLeft, Send } from 'lucide-react';
+import { Phone, Video, Building, Building2, Home, Clock, CheckCircle, ArrowLeft, Send } from 'lucide-react';
 import { useTranslation } from '../i18n';
 
 interface BookMeetingProps {
@@ -31,6 +31,20 @@ export const BookMeeting = ({ onNavigate }: BookMeetingProps) => {
       title: t('bookMeeting.officeTitle'),
       duration: t('bookMeeting.officeDuration'),
       desc: t('bookMeeting.officeDesc'),
+    },
+    {
+      id: 'office-hbg',
+      icon: Building2,
+      title: t('bookMeeting.officeHbgTitle'),
+      duration: t('bookMeeting.officeHbgDuration'),
+      desc: t('bookMeeting.officeHbgDesc'),
+    },
+    {
+      id: 'office-you',
+      icon: Home,
+      title: t('bookMeeting.officeYouTitle'),
+      duration: t('bookMeeting.officeYouDuration'),
+      desc: t('bookMeeting.officeYouDesc'),
     },
   ];
 
@@ -194,6 +208,12 @@ export const BookMeeting = ({ onNavigate }: BookMeetingProps) => {
                                 <Phone className="w-5 h-5" />
                             </div>
                             <span className="font-medium">+46(0) 70 36 26 744</span>
+                        </a>
+                        <a href="tel:+46763508994" className="flex items-center space-x-3 text-slate-700 hover:text-slate-700 transition-colors">
+                            <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-700">
+                                <Phone className="w-5 h-5" />
+                            </div>
+                            <span className="font-medium">076 350 89 94</span>
                         </a>
                         <a href="mailto:kontakt@delita.se" className="flex items-center space-x-3 text-slate-700 hover:text-slate-700 transition-colors">
                              <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-700">

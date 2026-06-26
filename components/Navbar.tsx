@@ -70,6 +70,15 @@ export const Navbar = ({ onNavigate, currentRoute }: NavbarProps) => {
     { label: t('nav.br2'), path: '/nyheter-kommer-snart' },
     { label: t('nav.br3'), path: '/nyheter-kommer-snart' },
     { label: t('nav.br4'), path: '/nyheter-kommer-snart' },
+    { label: t('nav.br5'), path: '/nyheter-kommer-snart' },
+    { label: t('nav.br6'), path: '/nyheter-kommer-snart' },
+    { label: t('nav.br7'), path: '/nyheter-kommer-snart' },
+    { label: t('nav.br8'), path: '/nyheter-kommer-snart' },
+    { label: t('nav.br9'), path: '/nyheter-kommer-snart' },
+    { label: t('nav.br10'), path: '/nyheter-kommer-snart' },
+    { label: t('nav.br11'), path: '/nyheter-kommer-snart' },
+    { label: t('nav.br12'), path: '/nyheter-kommer-snart' },
+    { label: t('nav.br13'), path: '/nyheter-kommer-snart' },
   ];
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -237,7 +246,7 @@ export const Navbar = ({ onNavigate, currentRoute }: NavbarProps) => {
                   transition={{ duration: 0.2 }}
                   className="absolute top-full left-1/2 -translate-x-1/2 w-64 pt-4"
                 >
-                  <div className="bg-white rounded-lg shadow-xl border border-slate-100 py-2">
+                  <div className="bg-white rounded-lg shadow-xl border border-slate-100 py-2 max-h-[70vh] overflow-y-auto">
                     {branschItems.map((item) => (
                       <button
                         key={item.label}

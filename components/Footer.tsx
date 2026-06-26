@@ -47,6 +47,14 @@ export const Footer = ({ onNavigate }: FooterProps) => {
               </div>
 
               <div className="flex items-start space-x-3">
+                <MapPin className="w-5 h-5 text-slate-700 mt-0.5 shrink-0" />
+                <div>
+                  <p className="text-slate-800 font-medium">Södergatan 15</p>
+                  <p className="text-slate-600">252 18 Helsingborg</p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-3">
                 <Mail className="w-5 h-5 text-slate-700 mt-0.5 shrink-0" />
                 <a href="mailto:kontakt@delita.se" className="text-slate-600 hover:text-slate-800 transition-colors">
                   kontakt@delita.se

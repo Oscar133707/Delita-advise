@@ -74,6 +74,7 @@ export const Contact = ({ onNavigate }: ContactProps) => {
                    <div>
                      <h3 className="font-serif text-lg font-medium text-slate-900 mb-2">{t('contact.address')}</h3>
                      <p className="text-slate-600 leading-relaxed">Södergatan 19<br/>211 34 Malmö</p>
+                     <p className="text-slate-600 leading-relaxed mt-3">Södergatan 15<br/>252 18 Helsingborg</p>
                    </div>
                 </div>
 

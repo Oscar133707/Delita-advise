@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ChevronRight, Music, Star, Building2, Store } from 'lucide-react';
+import { ChevronRight, Sparkles, Store, Car, HardHat, Home, Music, Star, Building2, Rocket, HeartPulse, Landmark, UtensilsCrossed, Ship } from 'lucide-react';
 import { useTranslation } from '../i18n';
 
 interface BranschSpecifikProps {
@@ -11,10 +11,19 @@ export const BranschSpecifik = ({ onNavigate }: BranschSpecifikProps) => {
   const { t } = useTranslation();
 
   const industries = [
-    { icon: Music,     titleKey: 'nav.br1' },
-    { icon: Star,      titleKey: 'nav.br2' },
-    { icon: Building2, titleKey: 'nav.br3' },
-    { icon: Store,     titleKey: 'nav.br4' },
+    { icon: Sparkles,        titleKey: 'nav.br1' },
+    { icon: Store,           titleKey: 'nav.br2' },
+    { icon: Car,             titleKey: 'nav.br3' },
+    { icon: HardHat,         titleKey: 'nav.br4' },
+    { icon: Home,            titleKey: 'nav.br5' },
+    { icon: Music,           titleKey: 'nav.br6' },
+    { icon: Star,            titleKey: 'nav.br7' },
+    { icon: Building2,       titleKey: 'nav.br8' },
+    { icon: Rocket,          titleKey: 'nav.br9' },
+    { icon: HeartPulse,      titleKey: 'nav.br10' },
+    { icon: Landmark,        titleKey: 'nav.br11' },
+    { icon: UtensilsCrossed, titleKey: 'nav.br12' },
+    { icon: Ship,            titleKey: 'nav.br13' },
   ];
 
   return (
