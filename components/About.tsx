@@ -307,8 +307,8 @@ export const About = ({ onNavigate }: AboutProps) => {
               <h3 className="font-serif text-2xl md:text-3xl font-medium text-slate-900 text-center mb-10">
                 {t('about.otherTeamHeading')}
               </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                <div className="bg-white rounded-sm border border-slate-100 shadow-sm p-6 text-center">
+              <div className="flex flex-wrap justify-center gap-6">
+                <div className="bg-white rounded-sm border border-slate-100 shadow-sm p-6 text-center w-full max-w-sm">
                   <h4 className="font-serif text-xl font-medium text-slate-900">Jenny Lundberg</h4>
                   <p className="text-slate-600 text-sm font-bold uppercase tracking-[0.2em] mt-2">{t('about.jennyRole')}</p>
                   <a

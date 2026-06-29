@@ -104,7 +104,7 @@ export const BookMeeting = ({ onNavigate }: BookMeetingProps) => {
       <div className="max-w-6xl mx-auto px-6 py-16">
 
         {/* Meeting Options */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div className="flex flex-wrap justify-center gap-8 mb-16">
             {meetingTypes.map((type, index) => (
                 <motion.div
                     key={type.id}
@@ -112,7 +112,7 @@ export const BookMeeting = ({ onNavigate }: BookMeetingProps) => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
                     onClick={() => selectMeetingType(type.id)}
-                    className={`bg-white p-8 rounded-2xl shadow-sm border-2 cursor-pointer transition-all duration-300 ${formData.meetingType === type.id ? 'border-delita-navy ring-4 ring-delita-navy/5' : 'border-transparent hover:border-delita-navy/30'}`}
+                    className={`w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.334rem)] bg-white p-8 rounded-2xl shadow-sm border-2 cursor-pointer transition-all duration-300 ${formData.meetingType === type.id ? 'border-delita-navy ring-4 ring-delita-navy/5' : 'border-transparent hover:border-delita-navy/30'}`}
                 >
                     <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-6 ${formData.meetingType === type.id ? 'bg-delita-navy text-slate-800' : 'bg-slate-50 text-slate-700'}`}>
                         <type.icon className="w-6 h-6" />
@@ -203,17 +203,32 @@ export const BookMeeting = ({ onNavigate }: BookMeetingProps) => {
                     <p className="text-slate-600 mb-6 font-light">{t('bookMeeting.altContactText')}</p>
 
                     <div className="space-y-4">
-                        <a href="tel:+46703626744" className="flex items-center space-x-3 text-slate-700 hover:text-slate-700 transition-colors">
-                            <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-700">
+                        <a href="tel:+46768427787" className="flex items-center space-x-3 text-slate-700 hover:text-slate-700 transition-colors">
+                            <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-700 shrink-0">
                                 <Phone className="w-5 h-5" />
                             </div>
-                            <span className="font-medium">+46(0) 70 36 26 744</span>
+                            <span className="flex flex-col leading-tight">
+                                <span className="font-medium">Johanna</span>
+                                <span className="text-sm text-slate-600">+46 (0) 768 42 77 87</span>
+                            </span>
+                        </a>
+                        <a href="tel:+46703626744" className="flex items-center space-x-3 text-slate-700 hover:text-slate-700 transition-colors">
+                            <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-700 shrink-0">
+                                <Phone className="w-5 h-5" />
+                            </div>
+                            <span className="flex flex-col leading-tight">
+                                <span className="font-medium">Niclas</span>
+                                <span className="text-sm text-slate-600">+46 (0) 70 36 26 744</span>
+                            </span>
                         </a>
                         <a href="tel:+46763508994" className="flex items-center space-x-3 text-slate-700 hover:text-slate-700 transition-colors">
-                            <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-700">
+                            <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-700 shrink-0">
                                 <Phone className="w-5 h-5" />
                             </div>
-                            <span className="font-medium">076 350 89 94</span>
+                            <span className="flex flex-col leading-tight">
+                                <span className="font-medium">Tommy</span>
+                                <span className="text-sm text-slate-600">+46 (0) 76-350 8994</span>
+                            </span>
                         </a>
                         <a href="mailto:kontakt@delita.se" className="flex items-center space-x-3 text-slate-700 hover:text-slate-700 transition-colors">
                              <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-700">

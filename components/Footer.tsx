@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Mail, ExternalLink, Instagram, Facebook, Shield } from 'lucide-react';
+import { MapPin, Mail, ExternalLink, Instagram, Facebook, Linkedin, Shield } from 'lucide-react';
 import fortnoxIcon from '../Delita bilder/Logos/fortnox-icon.svg';
 import accountecLogo from '../Delita bilder/Logos/674ec2a544b7a38a39f18497_logo-cirkel-green-white.png';
 import srfLogo from '../Delita bilder/Logos/srf_bildmarke_kvadrat-1-removebg-preview.png';
@@ -72,6 +72,9 @@ export const Footer = ({ onNavigate }: FooterProps) => {
                   </a>
                   <a href="https://facebook.com/delitaadvise" target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-700/20 rounded-full hover:bg-slate-700/40 hover:scale-110 transition-all text-slate-800 border border-slate-400/30">
                     <Facebook className="w-5 h-5" />
+                  </a>
+                  <a href="https://www.linkedin.com/company/delita-advise" target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-700/20 rounded-full hover:bg-slate-700/40 hover:scale-110 transition-all text-slate-800 border border-slate-400/30">
+                    <Linkedin className="w-5 h-5" />
                   </a>
                </div>
             </div>
@@ -182,6 +185,8 @@ export const Footer = ({ onNavigate }: FooterProps) => {
                 </a>
               </div>
             </div>
+
+            <p className="text-xs text-slate-600 leading-relaxed pt-2">{t('footer.collectiveAgreement')}</p>
           </div>
 
         </div>

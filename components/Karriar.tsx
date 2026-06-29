@@ -15,7 +15,7 @@ export const Karriar = ({ onNavigate }: KarriarProps) => {
     email: '',
     phone: '',
     linkedin: '',
-    position: '',
+    positions: [] as string[],
     gdpr: false
   });
   const [file, setFile] = useState<File | null>(null);
@@ -54,7 +54,7 @@ export const Karriar = ({ onNavigate }: KarriarProps) => {
         email: '',
         phone: '',
         linkedin: '',
-        position: '',
+        positions: [],
         gdpr: false
       });
       setFile(null);
@@ -65,6 +65,23 @@ export const Karriar = ({ onNavigate }: KarriarProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const value = e.target.type === 'checkbox' ? (e.target as HTMLInputElement).checked : e.target.value;
     setFormState({ ...formState, [e.target.name]: value });
+  };
+
+  const positionOptions = [
+    { value: 'Rekrytering', label: t('career.positionRekrytering') },
+    { value: 'Interimuppdrag', label: t('career.positionInterim') },
+    { value: 'Uthyrning', label: t('career.positionUthyrning') },
+    { value: 'Hos Delita Advise', label: t('career.positionHosDelita') },
+    { value: 'Praktik', label: t('career.positionIntern') },
+  ];
+
+  const togglePosition = (value: string) => {
+    setFormState((prev) => ({
+      ...prev,
+      positions: prev.positions.includes(value)
+        ? prev.positions.filter((p) => p !== value)
+        : [...prev.positions, value],
+    }));
   };
 
   return (
@@ -296,19 +313,29 @@ export const Karriar = ({ onNavigate }: KarriarProps) => {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">{t('career.positionLabel')}</label>
-                      <select
-                        name="position"
-                        value={formState.position} onChange={handleChange}
-                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-sm focus:ring-2 focus:ring-delita-navy focus:border-transparent outline-none transition-all"
-                      >
-                        <option value="">{t('career.positionPlaceholder')}</option>
-                        <option value="Rekrytering">{t('career.positionRekrytering')}</option>
-                        <option value="Interimuppdrag">{t('career.positionInterim')}</option>
-                        <option value="Uthyrning">{t('career.positionUthyrning')}</option>
-                        <option value="Hos Delita Advise">{t('career.positionHosDelita')}</option>
-                        <option value="Praktik">{t('career.positionIntern')}</option>
-                      </select>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
+                        {t('career.positionLabel')} <span className="text-slate-400 font-normal">{t('career.positionHint')}</span>
+                      </label>
+                      <div className="flex flex-wrap gap-2">
+                        {positionOptions.map((opt) => {
+                          const selected = formState.positions.includes(opt.value);
+                          return (
+                            <button
+                              key={opt.value}
+                              type="button"
+                              onClick={() => togglePosition(opt.value)}
+                              aria-pressed={selected}
+                              className={`px-4 py-2.5 rounded-full border text-sm transition-all ${
+                                selected
+                                  ? 'bg-delita-navy border-delita-navy text-slate-800 font-medium'
+                                  : 'bg-slate-50 border-slate-200 text-slate-600 hover:border-slate-300'
+                              }`}
+                            >
+                              {opt.label}
+                            </button>
+                          );
+                        })}
+                      </div>
                     </div>
 
                     <div>

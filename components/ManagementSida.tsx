@@ -42,7 +42,7 @@ export const ManagementSida = ({ onNavigate }: Props) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="font-serif text-4xl md:text-6xl font-medium mb-6"
+            className="font-serif text-4xl md:text-5xl font-medium mb-6"
           >
             {t('management.heading')}
           </motion.h1>

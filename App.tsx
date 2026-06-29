@@ -22,6 +22,7 @@ import { RedovisningRapportering } from './components/RedovisningRapportering';
 import { HRHumanResource } from './components/HRHumanResource';
 import { InternationellaUppdrag } from './components/InternationellaUppdrag';
 import { ManagementSida } from './components/ManagementSida';
+import { InfluencerCreator } from './components/InfluencerCreator';
 
 export default function App() {
   const [currentRoute, setCurrentRoute] = useState('/');
@@ -61,6 +62,8 @@ export default function App() {
             <InternationellaUppdrag onNavigate={navigateTo} />
           ) : currentRoute === '/tjanster/management' ? (
             <ManagementSida onNavigate={navigateTo} />
+          ) : currentRoute === '/branscher/influencer-creator' ? (
+            <InfluencerCreator onNavigate={navigateTo} />
           ) : currentRoute === '/om-oss' ? (
             <About onNavigate={navigateTo} />
           ) : currentRoute === '/karriar' ? (

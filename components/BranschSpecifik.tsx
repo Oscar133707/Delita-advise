@@ -10,14 +10,14 @@ interface BranschSpecifikProps {
 export const BranschSpecifik = ({ onNavigate }: BranschSpecifikProps) => {
   const { t } = useTranslation();
 
-  const industries = [
+  const industries: { icon: typeof Sparkles; titleKey: string; path?: string }[] = [
     { icon: Sparkles,        titleKey: 'nav.br1' },
     { icon: Store,           titleKey: 'nav.br2' },
     { icon: Car,             titleKey: 'nav.br3' },
     { icon: HardHat,         titleKey: 'nav.br4' },
     { icon: Home,            titleKey: 'nav.br5' },
     { icon: Music,           titleKey: 'nav.br6' },
-    { icon: Star,            titleKey: 'nav.br7' },
+    { icon: Star,            titleKey: 'nav.br7', path: '/branscher/influencer-creator' },
     { icon: Building2,       titleKey: 'nav.br8' },
     { icon: Rocket,          titleKey: 'nav.br9' },
     { icon: HeartPulse,      titleKey: 'nav.br10' },
@@ -44,16 +44,16 @@ export const BranschSpecifik = ({ onNavigate }: BranschSpecifikProps) => {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="flex flex-wrap justify-center gap-6">
           {industries.map((industry, index) => (
             <motion.button
               key={index}
-              onClick={() => onNavigate('/nyheter-kommer-snart')}
+              onClick={() => onNavigate(industry.path ?? '/nyheter-kommer-snart')}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
-              className="group bg-white border border-slate-100 rounded-sm p-8 flex flex-col items-center text-center gap-4 hover:border-slate-300 hover:shadow-md transition-all duration-300"
+              transition={{ delay: Math.min(index, 7) * 0.06, duration: 0.6 }}
+              className="group w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)] bg-white border border-slate-100 rounded-sm p-8 flex flex-col items-center text-center gap-4 hover:border-slate-300 hover:shadow-md transition-all duration-300"
             >
               <div className="p-4 bg-slate-50 rounded-full border border-slate-100 group-hover:bg-delita-navy transition-colors duration-300">
                 <industry.icon className="w-6 h-6 text-slate-600 group-hover:text-slate-800 transition-colors" />
@@ -65,7 +65,7 @@ export const BranschSpecifik = ({ onNavigate }: BranschSpecifikProps) => {
 
               <div className="flex items-center gap-1.5 mt-auto">
                 <span className="text-xs text-slate-400 font-medium tracking-wide">
-                  {t('shared.comingSoon')}
+                  {industry.path ? t('shared.readMore') : t('shared.comingSoon')}
                 </span>
                 <ChevronRight className="w-3.5 h-3.5 text-slate-400 opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all duration-200" />
               </div>

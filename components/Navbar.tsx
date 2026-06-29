@@ -244,14 +244,14 @@ export const Navbar = ({ onNavigate, currentRoute }: NavbarProps) => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 10 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute top-full left-1/2 -translate-x-1/2 w-64 pt-4"
+                  className="absolute top-full left-1/2 -translate-x-1/2 w-[34rem] pt-4"
                 >
-                  <div className="bg-white rounded-lg shadow-xl border border-slate-100 py-2 max-h-[70vh] overflow-y-auto">
+                  <div className="bg-white rounded-lg shadow-xl border border-slate-100 p-2 grid grid-cols-2 gap-x-2">
                     {branschItems.map((item) => (
                       <button
                         key={item.label}
                         onClick={() => { handleNavClick(item.path); setHoverBransch(false); }}
-                        className="block w-full text-left px-6 py-3 text-sm text-slate-600 hover:bg-slate-50 hover:text-slate-700 transition-colors"
+                        className="block w-full text-left px-4 py-2.5 rounded-md text-sm text-slate-600 hover:bg-slate-50 hover:text-slate-700 transition-colors"
                       >
                         {item.label}
                       </button>
