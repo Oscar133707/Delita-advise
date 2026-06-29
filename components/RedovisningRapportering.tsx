@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Clock } from 'lucide-react';
-import heroImage from '../Delita bilder/Tjänster/cht-gsml-QfQW294I8sQ-unsplash.jpg';
+import heroImage from '../Delita bilder/Tjanster/cht-gsml-QfQW294I8sQ-unsplash.jpg';
 import { useTranslation } from '../i18n';
 
 interface Props {

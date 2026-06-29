@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import heroImage from '../Delita bilder/Tjänster/aleksandrs-karevs-ZCDA1-cih6o-unsplash.jpg';
+import heroImage from '../Delita bilder/Tjanster/aleksandrs-karevs-ZCDA1-cih6o-unsplash.jpg';
 import { useTranslation } from '../i18n';
 
 interface HeroProps {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Clock } from 'lucide-react';
-import heroImage from '../Delita bilder/Tjänster/pexels-cottonbro-7437499.jpg';
+import heroImage from '../Delita bilder/Tjanster/pexels-cottonbro-7437499.jpg';
 import { useTranslation } from '../i18n';
 
 interface Props {

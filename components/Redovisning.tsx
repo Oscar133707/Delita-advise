@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Phone, CheckCircle2 } from 'lucide-react';
-import bookkeepingImage from '../Delita bilder/Tjänster/aalo-lens-IN_YVhv-Le8-unsplash.jpg';
-import annualReportImage from '../Delita bilder/Tjänster/pexels-karola-g-7681091.jpg';
-import taxHandlingImage from '../Delita bilder/Tjänster/gabrielle-henderson-HJckKnwCXxQ-unsplash.jpg';
+import bookkeepingImage from '../Delita bilder/Tjanster/aalo-lens-IN_YVhv-Le8-unsplash.jpg';
+import annualReportImage from '../Delita bilder/Tjanster/pexels-karola-g-7681091.jpg';
+import taxHandlingImage from '../Delita bilder/Tjanster/gabrielle-henderson-HJckKnwCXxQ-unsplash.jpg';
 import { useTranslation } from '../i18n';
 
 interface RedovisningProps {

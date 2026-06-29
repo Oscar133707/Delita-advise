@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Phone, CheckCircle2 } from 'lucide-react';
-import processOptimizationImage from '../Delita bilder/Tjänster/ruthson-zimmerman-FVwG5OzPuzo-unsplash.jpg';
+import processOptimizationImage from '../Delita bilder/Tjanster/ruthson-zimmerman-FVwG5OzPuzo-unsplash.jpg';
 import { useTranslation } from '../i18n';
 
 interface RadgivningProps {
