@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Mail, Send, Calendar, CheckCircle, ChevronRight } from 'lucide-react';
+import { MapPin, Mail, Phone, Send, Calendar, CheckCircle, ChevronRight } from 'lucide-react';
 import { useTranslation } from '../i18n';
 
 interface ContactProps {
@@ -88,6 +88,28 @@ export const Contact = ({ onNavigate }: ContactProps) => {
                      <p className="text-slate-600">kontakt@delita.se</p>
                    </div>
                 </a>
+
+                {/* Phone */}
+                <div className="p-8 bg-white rounded-sm border border-slate-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-6 group">
+                  <div className="p-4 bg-slate-50 rounded-full text-slate-700 group-hover:bg-delita-navy group-hover:text-slate-800 transition-colors">
+                    <Phone className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="font-serif text-lg font-medium text-slate-900 mb-3">{t('contact.phone')}</h3>
+                    <div className="space-y-2">
+                      {[
+                        { name: 'Johanna', tel: '+46768427787', display: '+46 (0) 768 42 77 87' },
+                        { name: 'Niclas',  tel: '+46703626744', display: '+46 (0) 70 36 26 744' },
+                        { name: 'Tommy',   tel: '+46763508994', display: '+46 (0) 76-350 8994'  },
+                      ].map(c => (
+                        <a key={c.name} href={`tel:${c.tel}`} className="flex items-baseline gap-2 text-slate-600 hover:text-slate-900 transition-colors">
+                          <span className="font-medium text-slate-800 w-16 shrink-0">{c.name}</span>
+                          <span>{c.display}</span>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
 
               </div>
 
