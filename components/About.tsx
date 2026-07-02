@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail } from 'lucide-react';
+import { Mail, Heart, Shield, Users } from 'lucide-react';
 import { useTranslation } from '../i18n';
 import agenda2030 from '../Delita bilder/Om oss/agenda_2030_17_globala_mal_for_hallbar_utveckling.png';
 import johannaPhoto from '../Delita bilder/Team/johanna-andersson.jpg';
@@ -344,20 +344,63 @@ export const About = ({ onNavigate }: AboutProps) => {
             </h2>
           </motion.div>
 
-          {/* Prose paragraphs */}
+          {/* Intro */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="max-w-2xl mx-auto space-y-8 text-slate-600 text-[1.05rem] leading-[1.85] font-light"
+            className="max-w-2xl mx-auto space-y-5 text-slate-600 text-[1.05rem] leading-[1.85] font-light text-center mb-14"
           >
             <p>{t('about.communityP1')}</p>
             <p>{t('about.communityP2')}</p>
-            <p>{t('about.communityP3')}</p>
-            <p>{t('about.communityP4')}</p>
-            <p>{t('about.communityP5')}</p>
-            <p>{t('about.communityP6')}</p>
+          </motion.div>
+
+          {/* 3-column cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-14">
+            {([
+              { icon: Heart,  titleKey: 'about.communityCard1Title', textKey: 'about.communityP3' },
+              { icon: Shield, titleKey: 'about.communityCard2Title', textKey: 'about.communityP4' },
+              { icon: Users,  titleKey: 'about.communityCard3Title', textKey: 'about.communityP5' },
+            ] as const).map(({ icon: Icon, titleKey, textKey }, i) => (
+              <motion.div
+                key={titleKey}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.5 }}
+                className="bg-slate-50 p-8 rounded-sm border border-slate-100 shadow-sm"
+              >
+                <div className="mb-5 p-3 rounded-full bg-white border border-slate-100 w-fit">
+                  <Icon className="w-6 h-6 text-slate-700" strokeWidth={1.5} />
+                </div>
+                <h3 className="font-serif text-xl text-slate-900 mb-3">{t(titleKey)}</h3>
+                <p className="text-slate-600 font-light leading-relaxed text-sm">{t(textKey)}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Quote / highlight */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="max-w-2xl mx-auto mb-10"
+          >
+            <blockquote className="bg-[#E6DED1]/30 border-l-4 border-[#E6DED1] rounded-sm px-8 py-6">
+              <p className="font-serif text-lg text-slate-800 leading-relaxed italic">{t('about.communityP6')}</p>
+            </blockquote>
+          </motion.div>
+
+          {/* Closing */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="max-w-2xl mx-auto text-slate-600 text-[1.05rem] leading-[1.85] font-light text-center"
+          >
             <p>{t('about.communityP7')}</p>
           </motion.div>
 
