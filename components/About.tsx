@@ -369,13 +369,13 @@ export const About = ({ onNavigate }: AboutProps) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="bg-slate-50 p-8 rounded-sm border border-slate-100 shadow-sm"
+                className="bg-white p-10 rounded-sm shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-slate-100 group flex flex-col items-center text-center"
               >
-                <div className="mb-5 p-3 rounded-full bg-white border border-slate-100 w-fit">
-                  <Icon className="w-6 h-6 text-slate-700" strokeWidth={1.5} />
+                <div className="mb-8 p-4 rounded-full bg-slate-50 group-hover:bg-delita-navy transition-colors duration-500">
+                  <Icon className="w-8 h-8 text-slate-700 group-hover:text-slate-900 transition-colors duration-500" strokeWidth={1.5} />
                 </div>
-                <h3 className="font-serif text-xl text-slate-900 mb-3">{t(titleKey)}</h3>
-                <p className="text-slate-600 font-light leading-relaxed text-sm">{t(textKey)}</p>
+                <h3 className="font-serif text-xl font-semibold text-slate-900 mb-4 group-hover:text-slate-700 transition-colors">{t(titleKey)}</h3>
+                <p className="text-slate-600 font-light leading-relaxed">{t(textKey)}</p>
               </motion.div>
             ))}
           </div>
