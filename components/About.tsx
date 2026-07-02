@@ -328,7 +328,7 @@ export const About = ({ onNavigate }: AboutProps) => {
       </section>
 
       {/* SAMHÄLLSENGAGEMANG */}
-      <section className="py-24 bg-white">
+      <section className="pt-8 pb-24 bg-white border-t border-slate-100">
         <div className="max-w-6xl mx-auto px-6">
 
           {/* Heading */}
@@ -337,11 +337,8 @@ export const About = ({ onNavigate }: AboutProps) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-16 pt-16"
           >
-            <span className="text-slate-700 text-sm font-bold tracking-[0.2em] uppercase mb-4 block">
-              {t('about.communityLabel')}
-            </span>
             <h2 className="font-serif text-3xl md:text-5xl text-slate-900">
               {t('about.communityHeading')}
             </h2>
@@ -353,7 +350,7 @@ export const About = ({ onNavigate }: AboutProps) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="max-w-3xl mx-auto space-y-6 text-slate-600 leading-relaxed font-light"
+            className="max-w-2xl mx-auto space-y-8 text-slate-600 text-[1.05rem] leading-[1.85] font-light"
           >
             <p>{t('about.communityP1')}</p>
             <p>{t('about.communityP2')}</p>
