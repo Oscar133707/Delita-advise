@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail } from 'lucide-react';
 import { useTranslation } from '../i18n';
+import agenda2030 from '../Delita bilder/Om oss/agenda_2030_17_globala_mal_for_hallbar_utveckling.png';
 import johannaPhoto from '../Delita bilder/Team/johanna-andersson.jpg';
 import niclasPhoto from '../Delita bilder/Team/niclas-herslow.jpg';
 import tommyPhoto from '../Delita bilder/Team/tommy-magnusson.jpg';
@@ -323,6 +324,75 @@ export const About = ({ onNavigate }: AboutProps) => {
             </motion.div>
 
           </div>
+        </div>
+      </section>
+
+      {/* SAMHÄLLSENGAGEMANG */}
+      <section className="py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+
+          {/* Heading */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <span className="text-slate-700 text-sm font-bold tracking-[0.2em] uppercase mb-4 block">
+              {t('about.communityLabel')}
+            </span>
+            <h2 className="font-serif text-3xl md:text-5xl text-slate-900">
+              {t('about.communityHeading')}
+            </h2>
+          </motion.div>
+
+          {/* Prose paragraphs */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="max-w-3xl mx-auto space-y-6 text-slate-600 leading-relaxed font-light"
+          >
+            <p>{t('about.communityP1')}</p>
+            <p>{t('about.communityP2')}</p>
+            <p>{t('about.communityP3')}</p>
+            <p>{t('about.communityP4')}</p>
+            <p>{t('about.communityP5')}</p>
+            <p>{t('about.communityP6')}</p>
+            <p>{t('about.communityP7')}</p>
+          </motion.div>
+
+          {/* Agenda 2030 */}
+          <div className="border-t border-slate-100 mt-20 pt-20">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+            >
+              <div className="space-y-5 text-slate-600 leading-relaxed font-light">
+                <h3 className="font-serif text-2xl md:text-3xl text-slate-900 mb-6">
+                  {t('about.sdgHeading')}
+                </h3>
+                <p>{t('about.sdgP1')}</p>
+                <p>{t('about.sdgP2')}</p>
+                <p>{t('about.sdgP3')}</p>
+              </div>
+              <div className="bg-slate-900 rounded-sm p-6 shadow-xl">
+                <img
+                  src={agenda2030}
+                  alt="Agenda 2030 – 17 globala mål för hållbar utveckling"
+                  className="w-full h-auto rounded-sm"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </motion.div>
+          </div>
+
         </div>
       </section>
 
